@@ -1,0 +1,20 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #3a3a3a;
+    color: white;
+}
+
+.Header nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Header ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Header li {
+    margin: 0 20px;
+}
