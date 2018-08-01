@@ -13,6 +13,7 @@ module.exports={
 
         const db = req.app.get('db')
         let { sub, email, name, picture } = resWithUserData.data
+        console.log(resWithUserData.data)
 
         let foundUser = await db.find_user([sub])
 
