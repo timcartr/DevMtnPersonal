@@ -35,7 +35,6 @@ app.get('/auth/callback', async (req,res) => {
 
     let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
-    console.log(resWithUserData.data)
     
     const db = req.app.get('db')
     let { sub, email, name, picture } = resWithUserData.data
@@ -43,12 +42,21 @@ app.get('/auth/callback', async (req,res) => {
     let foundUser = await db.find_user([sub])
     if(foundUser[0]){
     req.session.user = foundUser[0];
+    console.log(req.session.user)
     
-    res.redirect('/#/admin')
+    res.redirect('/#/admin/members')
     } else {
         let createdUser = await db.create_member([name,sub,email,picture])
         req.session.user = createdUser
-        res.redirect('/#/admin')
+        res.redirect('/#/admin/members')
+    }
+})
+
+app.get('/api/user-data', (req, res) => {
+    if (req.session.user) {
+        res.status(200).send(req.session.user)
+    } else {
+        res.status(401).send('Nice try sucka!')
     }
 })
 

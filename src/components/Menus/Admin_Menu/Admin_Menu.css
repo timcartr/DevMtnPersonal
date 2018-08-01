@@ -1,0 +1,20 @@
+.Admin_Menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0087c1cd;
+    color: white;
+}
+
+.Admin_Menu nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Admin_Menu ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Admin_Menu li {
+    margin: 0 20px;
+}

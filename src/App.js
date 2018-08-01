@@ -8,14 +8,20 @@ import Home from './components/Home/Home';
 import Member_Profile from './components/Member_Profile/Member_Profile';
 import Dashboard from './components/Admin/Dashboard/Dashboard';
 import Members_Manager from './components/Admin/Members_Manager/Members_Manager';
-import AdminMenu from './components/Admin/Admin_Menu/Admin_Menu';
+import AdminMenu from './components/Menus/Admin_Menu/Admin_Menu';
+import UserMenu from './components/Menus/User_Menu/User_Menu';
+import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
+    let { user } = this.props
     return (
       <div className="App">
-        <Header/>
-        <AdminMenu/>
+        {
+          user.username ? (
+            user.permissions === 'admin' ? <AdminMenu/> : <UserMenu/>
+          ) : <Header/>
+        }
         <HashRouter>
           <Switch>
             <Route exact path='/' component={Home} />
@@ -30,4 +36,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+      user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(App);
