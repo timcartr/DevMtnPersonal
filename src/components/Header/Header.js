@@ -5,13 +5,14 @@ export default class Header extends Component {
     render() {
         return (
             <div className='Header'>
-                <h1>Logo</h1>
+                <img src="" alt="Wasatch Woodworking Logo"/>
                 <nav>
                     <ul>
                         <li>Home</li>
-                        <li>About</li>
+                        <li>Membership</li>
+                        <li>Tour</li>
                     </ul>
-                    <button>Login</button>
+                    <button onClick={this.props.login}>Login</button>
                 </nav>
             </div>
         )

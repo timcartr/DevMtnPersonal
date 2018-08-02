@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Dashboard.css'
+import './Admin_Dashboard.css'
 
 export default class Dashboard extends Component {
     render() {
