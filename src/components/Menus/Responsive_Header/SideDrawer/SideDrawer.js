@@ -1,5 +1,6 @@
 import React from 'react'
 import './SideDrawer.css'
+import {Link} from 'react-router-dom'
 
 const sideDrawer = props => {
     let drawerClasses = 'side-drawer'
@@ -8,10 +9,14 @@ const sideDrawer = props => {
     }
     return(
         <nav className={drawerClasses}>
+        <div className="side-drawer-flex">
             <ul>
-                <li><a href="/">Products</a></li>
-                <li><a href="/">Users</a></li>
+                <Link to='/'><li>Home</li></Link>
+                <Link to='/'><li>Membership</li></Link>
+                <Link to='/'><li>Tour</li></Link>
             </ul>
+            <div className="side-drawer-button">Log In</div>
+        </div>
         </nav>
     )
 }

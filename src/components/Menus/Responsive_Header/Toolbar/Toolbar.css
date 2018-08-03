@@ -3,8 +3,9 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: transparent;
+    background-color: transparent;
     height: 56px;
+    transition: background-color 0.25s ease-out;
 }
 
 .toolbar-scroll {
@@ -12,10 +13,11 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: #373737;
+    background-color: #373737;
     height: 56px;
     z-index: 200;
     box-shadow: 0px 1px 7px rgba(0,0,0,0.5);
+    transition: background-color 0.25s ease-out;
 }
 
 .toolbar_navigation {
@@ -23,6 +25,9 @@
     align-items: center;
     height: 100%;
     padding: 0 1rem;
+    font-family: "Overpass", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
 }
 
 .toolbar_logo {
@@ -50,6 +55,12 @@
     padding: 0 0.5rem;
 }
 
+.toolbar_navigation_items li span{
+    background: white;
+    color: #373737;
+    padding:15px;
+}
+
 .toolbar_navigation_items a {
     color: white;
     text-decoration: none;
@@ -58,6 +69,12 @@
 .toolbar_navigation_items a:hover,
 .toobar_navigation_items a:active {
     color: orange;
+}
+
+.toolbar_navigation_items span:hover,
+.toobar_navigation_items span:active {
+    background: orange;
+    color:white;
 }
 
 @media (max-width:768px){

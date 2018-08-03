@@ -16,12 +16,19 @@
     transform: translateX(0);
 }
 
+.side-drawer-flex {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .side-drawer ul {
     height:100%;
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .side-drawer li {
@@ -29,9 +36,22 @@
 }
 
 .side-drawer a {
-    color: purple;
+    color: #373737;
     text-decoration: none;
-    font-size: 1.2 rem;
+    font-family: "Overpass", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    padding: 10px;
+}
+
+.side-drawer-button{
+    background: #373737;
+    color: white;
+    padding:15px 10px;
+    margin: 0;
+    font-family: "Overpass", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
 }
 
 .side-drawer a:hover,

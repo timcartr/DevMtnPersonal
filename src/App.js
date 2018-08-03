@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import './reset.css';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Member_Profile from './components/Member_Profile/Member_Profile';
@@ -77,14 +77,12 @@ class App extends Component {
             </div>
           )
         }
-        <HashRouter>
           <Switch>
             <Route exact path='/' component={Home} login = {this.login}/>
             <Route path={`/member/${this.props.name}`} component={Member_Profile} />
             <Route exact path='/admin' component={Admin_Dashboard} />
             <Route path={`/admin/members`} component={Members_Manager} />
           </Switch>
-        </HashRouter>
         <Footer/>
       </div>
     );
