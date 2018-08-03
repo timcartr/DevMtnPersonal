@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
-// import './reset.css';
+import './reset.css';
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Member_Profile from './components/Member_Profile/Member_Profile';
@@ -11,8 +10,36 @@ import Members_Manager from './components/Admin/Members_Manager/Members_Manager'
 import AdminMenu from './components/Menus/Admin_Menu/Admin_Menu';
 import UserMenu from './components/Menus/User_Menu/User_Menu';
 import { connect } from 'react-redux';
+import Toolbar from './components/Menus/Responsive_Header/Toolbar/Toolbar'
+import SideDrawer from './components/Menus/Responsive_Header/SideDrawer/SideDrawer'
+import Backdrop from './components/Menus/Responsive_Header/Backdrop/Backdrop'
 
 class App extends Component {
+  state= {
+    sideDrawerOpen: false,
+    isTop: true,
+    width: 0,
+    height: 0
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', () => {
+      const isTop = window.scrollY < window.innerHeight-50;
+      if (isTop !== this.state.isTop) {
+          this.setState({ isTop })
+      }
+    })
+  }
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState)=> {
+      return {sideDrawerOpen: !prevState.sideDrawerOpen}
+    })
+  }
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen:false})
+  }
 
   login() {
     let { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID } = process.env
@@ -21,16 +48,34 @@ class App extends Component {
 
     window.location = 
     `https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_url=${url}&response_type=code`
-}
+  }
+  
 
   render() {
+    console.log(this.state.height)
+    let backdrop;
+
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+    }
+
     let { user } = this.props
     return (
-      <div className="App">
+      <div className="App" style={{height:'100%'}}>
         {
           user.username ? (
             user.permissions === 'admin' ? <AdminMenu/> : <UserMenu/>
-          ) : <Header login = {this.login}/>
+          ) : (
+            <div>
+            <Toolbar 
+              login = {this.login} 
+              drawerClickHandler={this.drawerToggleClickHandler}
+              scroll = {this.state.isTop}/>
+            <SideDrawer 
+              show={this.state.sideDrawerOpen}/>
+            {backdrop}
+            </div>
+          )
         }
         <HashRouter>
           <Switch>

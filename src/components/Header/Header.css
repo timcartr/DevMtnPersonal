@@ -1,20 +1,52 @@
 .Header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #3a3a3a;
+    background-color: #373737;
+    height: 40px;
+}
+
+.Header img{
+    display: none;
+}
+
+.FontAwesome {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 20px;
     color: white;
 }
 
-.Header nav {
-    display: flex;
-    justify-content: space-between;
+nav {
+    overflow: hidden;
+    height: 0px;
 }
 
-.Header ul {
-    display: flex;
-    justify-content: space-between;
+.mobileNavOpen nav{
+    height: 200px;
 }
 
-.Header li {
-    margin: 0 20px;
+@media (min-width:1000px) {
+    .Header {
+        display: flex;
+        justify-content: space-between;
+        background-color: #3a3a3a;
+        color: white;
+    }
+
+    .Header nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Header ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Header li {
+        margin: 0 20px;
+    }
+
+    .FontAwesome {
+        display: none;
+    }
 }
