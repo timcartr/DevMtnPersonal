@@ -1,0 +1,24 @@
+.Woodshop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: #f2f2f2
+}
+
+.Woodshop-spacer{
+    margin:13px;
+}
+
+.Woodshop h2 {
+    padding: 0 30px;
+}
+
+.Woodshop h3 {
+    padding: 0 30px;
+    margin: 21px 0 0 0 ;
+}
+
+.Woodshop p {
+    padding: 0 30px;
+}

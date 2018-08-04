@@ -1,24 +1,18 @@
 import React from 'react'
-import './Toolbar.css'
+import './AdminToolbar.css'
 import DrawerToggleButton from '../../DrawerToggleButton';
 import {Link} from 'react-router-dom'
 
 const toolbar = props => {
-    let scrollClasses = 'toolbar-scroll'
-    if(props.scroll){
-        scrollClasses = 'toolbar-top'
-    }
     return(
-        <header className={scrollClasses}>
+        <header className='adminToolbar'>
             <nav className="toolbar_navigation">
                 <div className="toolbar_logo"><a href="">LOGO</a></div>
                 <div className="spacer" />
                 <div className="toolbar_navigation_items">
                     <ul>
-                        <Link to='/'><li>Home</li></Link>
-                        <Link to='/'><li>Membership</li></Link>
-                        <Link to='/'><li>Tour</li></Link>
-                        <Link to='/'><li onClick={props.login}><span>Log In</span></li></Link>
+                    <Link to='/'><li><span>Firstname Lastname</span></li></Link>
+                    <img src="" alt=""/>
                     </ul>
                 </div>
                 <div className="toolbar_toggle-button">

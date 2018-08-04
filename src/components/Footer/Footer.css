@@ -1,0 +1,32 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+}
+
+.footer-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer p{
+    font-size:10px;
+    font-family: "Overpass", Arial, Helvetica, sans-serif;
+    margin: 5px 0;
+}
+
+.footer-flex a {
+    margin: 20px;
+    color: #333;
+}
+
+.footer-flex p {
+    margin: 0 6px;
+}
+
+.copyright {
+    margin-bottom:26px 0;
+}

@@ -5,26 +5,32 @@ import map from '../../../img/map.jpg'
 export default class Contact extends Component {
     render() {
         return (
-        <div className="Contact">
-            <div className="Contact-Left">
+        <div className="contact">
+            <div className="contact-left">
                 <h2>Contact Us</h2>
-                <p>Lorem ipsum dolor amet stumptown</p>
+                <h4>Lorem ipsum dolor amet stumptown</h4>
                 <input type="text" placeholder="Name"/>
                 <input type="text" placeholder="email@example.com"/>
                 <input type="text" placeholder="Message"/>
                 <button>Send It</button>
-                <p>Address</p>
-                <address>
-                    100 N 200 W <br/>
-                    Lehi, UT<br/>
-                    84043
-                </address>
-                <p>Phone</p>
-                <a href="tel:801-888-8888">801.888.8989</a>
-                <p>Email</p>
-                <a href="mailto:info@email.com">info@email.com</a>
+                <div className='contact-info'>
+                    <div>
+                        <p>Address</p>
+                        <address>
+                            100 N 200 W <br/>
+                            Lehi, UT<br/>
+                            84043
+                        </address>
+                    </div>
+                    <div>
+                        <p>Phone</p>
+                        <a href="tel:801-888-8888">801.888.8989</a>
+                        <p>Email</p>
+                        <a href="mailto:info@email.com">info@email.com</a>
+                    </div>
+                </div>
             </div>
-            <div className="Contact-Right">
+            <div className="contact-right">
                 <img src={map} alt=""/>
             </div>
         </div>

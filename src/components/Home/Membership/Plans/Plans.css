@@ -1,0 +1,33 @@
+.plans {
+    border: 1px solid #333;
+    padding: 0px 15px;
+    margin: 18px 0;
+}
+
+.plans h3{
+    text-align: center;
+    font-size: 24px;
+    margin: 21px 0;
+}
+
+.plans li{
+    margin: 17px 0;
+    color:#333;
+}
+
+.plans p {
+    margin-top:20px;
+}
+
+.plans p span {
+    font-size:32px;
+    font-weight: 700;
+}
+
+.plans button {
+    margin: 20px 0;
+}
+
+.fontAwesome {
+    color:#333;
+}

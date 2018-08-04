@@ -1,0 +1,33 @@
+.tools {
+    text-align: center;
+    height:90vh;
+}
+
+.tools-grad {
+    position: relative;
+    background-color: rgba(0,0,0,0.6);
+    height:100%;
+    width:100%;
+}
+
+.tools-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 200px;
+}
+
+.tools-content button{
+    display: none;
+}
+
+.tools-content h3 {
+    margin: 21px 0;
+    color: white;
+}
+
+.tools-content p {
+    color:white;
+}

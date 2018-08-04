@@ -25,6 +25,7 @@
     align-items: center;
     margin-top: 30vh;
     line-height: 36px;
+    padding: 0 20px;
 }
 
 h1 {
@@ -39,11 +40,13 @@ h1 {
 .WelcomeContent h2 {
     font-family: "Chivo", Arial, Helvetica, sans-serif;
     font-size: 20px;
+    font-weight: 400;
     text-align: center;
     letter-spacing: 3px;
     text-transform: uppercase;
     /* margin-top: 16px; */
     line-height: 28px;
+    color:white;
 }
 
 .WelcomeContent button {

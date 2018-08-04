@@ -14,7 +14,7 @@ class Members_Manager extends Component {
 
     render() {
         return (
-        <div className='Members_Manager'>
+        <div className='membersManager'>
             <h1>Members Manager</h1>
         </div>
         )

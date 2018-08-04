@@ -15,7 +15,7 @@ const sideDrawer = props => {
                 <Link to='/'><li>Membership</li></Link>
                 <Link to='/'><li>Tour</li></Link>
             </ul>
-            <div className="side-drawer-button">Log In</div>
+            <div className="side-drawer-button" onClick={props.login}>Log In</div>
         </div>
         </nav>
     )

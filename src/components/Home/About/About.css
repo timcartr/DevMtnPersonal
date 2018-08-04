@@ -1,0 +1,13 @@
+.About {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 30px;
+}
+
+.About img{
+    margin: 0 auto;
+}
+
+

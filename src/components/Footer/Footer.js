@@ -8,15 +8,18 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 export default class Footer extends Component {
     render() {
         return (
-        <div className='Footer'>
-        <p>About Us</p>
-        <p>Terms & Conditions</p>
-        <p>Privacy Policy</p>
-        <FontAwesomeIcon icon={faFacebookSquare} />
-        <FontAwesomeIcon icon={faTwitter} />
-        <FontAwesomeIcon icon={faInstagram} />
-        <p>© 2018 Wasatch Woodworking</p>
-
+        <div className='footer'>
+        <div className='footer-flex'>
+            <a href=""><FontAwesomeIcon icon={faFacebookSquare} /></a>
+            <a href=""><FontAwesomeIcon icon={faTwitter} /></a>
+            <a href=""><FontAwesomeIcon icon={faInstagram} /></a>
+        </div>
+        <div className='footer-flex'>
+            <p>About Us</p>
+            <p>Terms & Conditions</p>
+            <p>Privacy Policy</p>
+        </div>
+            <p className="copyright">© 2018 Wasatch Woodworking</p>
         </div>
         )
     }
