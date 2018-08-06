@@ -1,0 +1,97 @@
+.adminMember {
+    padding: 0 50px;
+    border-top: 0.5px solid #80808080;
+    background: white;
+}
+
+.alwaysDisplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 14px 0
+}
+
+.photoInfo {
+    display: flex;
+    align-items: center;
+}
+
+.nameMembership {
+    margin: 0 36px;
+}
+
+.nameMembership h2 {
+    margin: 0;
+}
+
+.photoWrapper {
+    background: #ccc;
+    border-radius: 50%;
+    width:75px;
+    height:75px;
+}
+
+.moreInfoToggle{
+    height: 30px;
+    width: 30px;
+    /* background: purple; */
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moreMemberInfo {
+    background: white;
+    padding-bottom: 14px;
+}
+
+.Hide {
+    height:0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.Display {
+    height: 100%;
+}
+
+.MoreMemberInfoFlex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hiddenMemberInfo {
+    margin-left: 111px;
+}
+
+.hiddenMemberInfo p{
+    font-family: "Overpass", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    margin: 12px 0;
+}
+
+.hiddenMemberInfo span {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 5px;
+    /* letter-spacing: 0px; */
+}
+
+.hiddenMembersButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+.hiddenMembersButtons button {
+    font-family: "Overpass", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    margin: 7px 0;
+    font-weight: 700;
+}

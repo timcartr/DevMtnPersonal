@@ -31,6 +31,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} login = {this.login}/>
             <Route path={`/member/${this.props.name}`} component={Member_Profile} />
+            <Route path={`/member/tim`} component={Member_Profile} />
             <Route exact path='/admin' component={Admin_Dashboard} />
             <Route path={`/admin/members`} component={Members_Manager} />
             {/* <Route path={`/checkout`} component={CheckoutForm} /> */}

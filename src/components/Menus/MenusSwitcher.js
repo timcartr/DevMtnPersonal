@@ -11,7 +11,7 @@ import UserMenu from './User_Menu/User_Menu';
 
 class MenusSwitcher extends Component {
     state= {
-        sideDrawerOpen: false,
+        sideDrawerOpen: true,
         backdropOpen:false,
         isTop: true,
         width: 0,
