@@ -7,6 +7,8 @@ import { faIdBadge } from '@fortawesome/free-solid-svg-icons'
 library.add(faIdBadge)
 
 export default class Member_Profile extends Component {
+
+    
     render() {
         let Background = 'http://www.comingsoon.net/assets/uploads/2017/04/PrattBar640.jpg'
         return (
@@ -32,6 +34,7 @@ export default class Member_Profile extends Component {
                     <button>Edit Profile</button>
                     <button>Upgrade Membership</button>
                     <p>To Cancel, <a href="/cancel">Click Here.</a></p>
+
                 </div>
             </div>
         )
