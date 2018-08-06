@@ -8,6 +8,8 @@ import SideDrawer from './Responsive_Header/SideDrawer/SideDrawer'
 import AdminToolbar from './Responsive_Admin_Menu/AdminToolbar/AdminToolbar'
 import AdminSideDrawer from './Responsive_Admin_Menu/AdminSideDrawer/AdminSideDrawer'
 import UserMenu from './User_Menu/User_Menu';
+import MemberToolbar from './Responsive_Member_Menu/MemberToolbar/MemberToolbar'
+import MemberSideDrawer from './Responsive_Member_Menu/MemberSideDrawer/MemberSideDrawer'
 
 class MenusSwitcher extends Component {
     state= {
@@ -58,14 +60,8 @@ class MenusSwitcher extends Component {
         return (
             // Bar Building Purposes
             <div>
-                <AdminToolbar 
+                <MemberToolbar 
                     drawerClickHandler={this.drawerToggleClickHandler} />
-                <AdminSideDrawer 
-                    login = {this.props.login}
-                    show={this.state.sideDrawerOpen}/>
-                    <div className={backdropClasses}>
-                    {backdrop}
-                    </div>
             </div>
 
             //Uncomment this out when ready for build
