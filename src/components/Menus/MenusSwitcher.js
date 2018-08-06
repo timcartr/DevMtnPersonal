@@ -7,7 +7,6 @@ import Toolbar from './Responsive_Header/Toolbar/Toolbar'
 import SideDrawer from './Responsive_Header/SideDrawer/SideDrawer'
 import AdminToolbar from './Responsive_Admin_Menu/AdminToolbar/AdminToolbar'
 import AdminSideDrawer from './Responsive_Admin_Menu/AdminSideDrawer/AdminSideDrawer'
-import UserMenu from './User_Menu/User_Menu';
 import MemberToolbar from './Responsive_Member_Menu/MemberToolbar/MemberToolbar'
 import MemberSideDrawer from './Responsive_Member_Menu/MemberSideDrawer/MemberSideDrawer'
 

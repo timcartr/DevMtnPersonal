@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import './App.css';
 
 // Route Components
-import routes from './routes'
+import Routes from './routes'
 import MenusSwitcher from './components/Menus/MenusSwitcher';
 import Footer from './components/Footer/Footer';
 
@@ -24,8 +24,8 @@ export default class App extends Component {
     return (
       <div className="App" style={{height:'100%'}}>
           <MenusSwitcher login={this.login}/>
-          {routes}
-        <Footer/>
+          <Routes/>
+          <Footer/>
       </div>
     );
   }
