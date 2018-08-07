@@ -27,6 +27,12 @@ class AdminToolbar extends Component {
             memberProfileDropdownHidden: true
         })
     };
+
+    closeDropdown = () => {
+        this.setState({
+            memberProfileDropdownHidden: true
+        })
+    }
     
     render() {
         const memberProfilePic = 'http://www.comingsoon.net/assets/uploads/2017/04/PrattBar640.jpg'
@@ -57,9 +63,11 @@ class AdminToolbar extends Component {
                 </nav>
                 <div className={toolbarDropdownClass}>
                     <ul>
+                        <Link to='/admin'><li onClick={this.closeDropdown}>Dashboard</li></Link>
+                        <hr/>
                         <li onClick={this.showUpdateProfile}>Edit Profile</li>
                         <hr/>
-                        <li>Sign Out</li>
+                        <li onClick={this.showUpdateProfile}>Sign Out</li>
                     </ul>
                 </div>
             </header>

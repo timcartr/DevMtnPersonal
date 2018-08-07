@@ -36,7 +36,7 @@ class MemberToolbar extends Component {
         let toolbarArrowClass = 'toolbarArrow'
         isHidden ? toolbarArrowClass : toolbarArrowClass = 'toolbarArrow selected'
         return(
-            <header className='MemberToolbar'>
+            <header className='memberToolbar'>
                 <nav className="toolbar_navigation">
                     <div className="toolbar_logo"><a href="">LOGO</a></div>
                     <div className="spacer" />
@@ -57,6 +57,7 @@ class MemberToolbar extends Component {
                 </nav>
                 <div className={toolbarDropdownClass}>
                     <ul>
+                        <Link to='/member/tim'><li onClick={this.closeDropdown}>View Profile</li></Link>
                         <li onClick={this.showUpdateProfile}>Edit Profile</li>
                         <hr/>
                         <li>Sign Out</li>

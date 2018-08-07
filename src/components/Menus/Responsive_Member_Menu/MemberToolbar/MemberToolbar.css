@@ -1,3 +1,13 @@
+.memberToolbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    height: 56px;
+    z-index: 300;
+}
+
 .memberButtons {
     display: flex;
     flex-direction: column;
@@ -43,6 +53,11 @@
     justify-content: center;
     color: rgb(31, 31, 31);
     margin-top: -10px;
+    cursor: pointer;
+}
+
+.toolbarArrow :hover {
+    color: white;
 }
 
 .selected {
@@ -55,7 +70,7 @@
     justify-content: center;
     color: rgb(31, 31, 31);
     margin-top: -10px;
-    color: white;
+    color: rgb(223, 223, 223);
 }
 
 .dropdown {
@@ -65,8 +80,8 @@
     justify-content: flex-start;
     align-items: center;
     color: #666;
-    background: white;
-    width: 170px;
+    background: rgb(244, 244, 244);
+    width: 150px;
     font-family: "Overpass", Arial, Helvetica, sans-serif;
     font-size: 14px; 
     font-weight: 700;
@@ -77,13 +92,22 @@
     transition: height 0.3s ease-out;
 }
 
+.dropdown li {
+    cursor: pointer;
+}
+
+.dropdown a {
+    text-decoration: none;
+    color: #666;
+}
+
 .dropdown hr {
     margin: 10px 0;
     border: 0.5px solid #80808030;
 }
 
 .show {
-    padding: 35px 16px;
-    height: 100%;
+    padding: 51px 16px;
     transition: height 0.3s ease-in;
+    z-index: 900;
 }

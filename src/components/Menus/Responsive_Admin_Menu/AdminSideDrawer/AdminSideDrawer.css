@@ -10,7 +10,7 @@
     transform: translateX(-102%);
     transition: transform 0.3s ease;
     border-right: 1px solid #80808080;
-    z-index: 100;
+    z-index: 900;
 }
 
 .adminSideDrawer.open {

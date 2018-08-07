@@ -60,6 +60,8 @@ app.get('/api/user-data', (req, res) => {
     }
 })
 
+app.get('/api/members', ctrl.getAllMembers)
+
 
 massive(CONNECTION_STRING).then( connection => {
     app.set('db', connection)

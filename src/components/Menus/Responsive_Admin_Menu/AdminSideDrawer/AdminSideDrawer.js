@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import './AdminSideDrawer.css'
 import {Link} from 'react-router-dom'
-// import DrawerToggleButton from '../../DrawerToggleButton'
 
 class AdminSideDrawer extends Component {
     
     render(){
         let drawerClasses = 'adminSideDrawer'
-        if(this.state.sideDrawerOpen){
+        if(this.props.sideDrawerOpen){
             drawerClasses = 'adminSideDrawer open'
         }
         return(
