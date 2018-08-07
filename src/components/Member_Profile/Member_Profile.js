@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
 import './Member_Profile.css'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIdBadge } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux';
+import { showModal } from '../Modals/actions/modal';
+import { MODAL_TYPE_EDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIP } from '../Modals/constants/ModalTypes';
 
-library.add(faIdBadge)
+class Member_Profile extends Component {
 
-export default class Member_Profile extends Component {
+    showUpdateProfile = () => {
+        this.props.showModal(MODAL_TYPE_EDITPROFILE, {
+        });
+        };
 
+    showUpgradeMembership = () => {
+        this.props.showModal(MODAL_TYPE_UPGRADEMEMBERSHIP, {
+        });
+        };
     
     render() {
         let Background = 'http://www.comingsoon.net/assets/uploads/2017/04/PrattBar640.jpg'
@@ -31,12 +38,13 @@ export default class Member_Profile extends Component {
                     <p><span>Phone:</span> 801.888.9898</p>
                 </div>
                 <div className='memberButtons'>
-                    <button>Edit Profile</button>
-                    <button>Upgrade Membership</button>
+                    <button onClick={this.showUpdateProfile}>Edit Profile</button>
+                    <button onClick={this.showUpgradeMembership}>Upgrade Membership</button>
                     <p>To Cancel, <a href="/cancel">Click Here.</a></p>
-
                 </div>
             </div>
         )
     }
 }
+
+export default connect(null, { showModal })(Member_Profile)

@@ -3,8 +3,11 @@ import './AdminMember.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSortUp } from '@fortawesome/free-solid-svg-icons'
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux';
+import { showModal } from '../../../Modals/actions/modal';
+import { MODAL_TYPE_ADMINEDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIP, MODAL_TYPE_DELETEMEMBER } from '../../../Modals/constants/ModalTypes';
 
-export default class AdminMembers extends Component {
+class AdminMember extends Component {
     state = {
         memberInfoHidden: true
     }
@@ -15,6 +18,21 @@ export default class AdminMembers extends Component {
                 memberInfoHidden: !prevState.memberInfoHidden}
         })
         }
+
+    showUpdateProfile = () => {
+        this.props.showModal(MODAL_TYPE_ADMINEDITPROFILE, {
+        });
+    };
+
+    showUpgradeMembership = () => {
+        this.props.showModal(MODAL_TYPE_UPGRADEMEMBERSHIP, {
+        });
+    };
+
+    showDeleteMember = () => {
+        this.props.showModal(MODAL_TYPE_DELETEMEMBER, {
+        });
+    };
 
     render() {
 
@@ -49,9 +67,9 @@ export default class AdminMembers extends Component {
                         <p><span>Phone:</span> 888.888.8888</p>
                     </div>
                     <div className='hiddenMembersButtons'>
-                        <button>Edit Member Information</button>
-                        <button>Change Membership Level</button>
-                        <button>Delete Member</button>
+                        <button onClick={this.showUpdateProfile}>Edit Member Information</button>
+                        <button onClick={this.showUpgradeMembership}>Change Membership Level</button>
+                        <button onClick={this.showDeleteMember}>Delete Member</button>
                     </div>
                 </div>
             </div>
@@ -59,3 +77,5 @@ export default class AdminMembers extends Component {
         )
     }
 }
+
+export default connect(null, { showModal })(AdminMember)

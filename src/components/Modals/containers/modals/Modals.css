@@ -1,0 +1,25 @@
+.modalStyle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalStyleButton {
+    margin: 40px 20%;
+}
+
+.modalStyleButton button{
+    width:100%;
+    margin: 10px 0;
+}
+
+.updateProfileButtons {
+    margin: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.updateProfileButtons button {
+    margin: 10px 0;
+}

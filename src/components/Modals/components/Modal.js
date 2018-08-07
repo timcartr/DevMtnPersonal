@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 
 const Overlay = styled.div`
   position: fixed;

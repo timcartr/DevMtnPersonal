@@ -8,6 +8,9 @@ import Routes from './routes'
 import MenusSwitcher from './components/Menus/MenusSwitcher';
 import Footer from './components/Footer/Footer';
 
+// Modals
+import ModalRoot from './components/Modals/containers/ModalRoot'
+
 export default class App extends Component {
 
   login() {
@@ -25,6 +28,7 @@ export default class App extends Component {
       <div className="App" style={{height:'100%'}}>
           <MenusSwitcher login={this.login}/>
           <Routes/>
+          <ModalRoot />
           <Footer/>
       </div>
     );

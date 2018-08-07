@@ -59,8 +59,16 @@ class MenusSwitcher extends Component {
         return (
             // Bar Building Purposes
             <div>
-                <MemberToolbar 
-                    drawerClickHandler={this.drawerToggleClickHandler} />
+                <Toolbar 
+                    login = {this.props.login} 
+                    drawerClickHandler={this.drawerToggleClickHandler}
+                    scroll = {this.state.isTop}/>
+                <SideDrawer 
+                    login = {this.props.login}
+                    show={this.state.sideDrawerOpen}/>
+                    <div className={backdropClasses}>
+                    {backdrop}
+                    </div>
             </div>
 
             //Uncomment this out when ready for build

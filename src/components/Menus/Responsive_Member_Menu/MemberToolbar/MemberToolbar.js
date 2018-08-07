@@ -3,10 +3,12 @@ import './MemberToolbar.css'
 import DrawerToggleButton from '../../DrawerToggleButton';
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSortUp } from '@fortawesome/free-solid-svg-icons'
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux';
+import { showModal } from '../../../Modals/actions/modal';
+import { MODAL_TYPE_EDITPROFILE } from '../../../Modals/constants/ModalTypes';
 
-export default class MemberToolbar extends Component {
+class MemberToolbar extends Component {
     state = {
         memberProfileDropdownHidden: true
     }
@@ -17,6 +19,14 @@ export default class MemberToolbar extends Component {
                 memberProfileDropdownHidden: !prevState.memberProfileDropdownHidden}
         })
         }
+
+    showUpdateProfile = () => {
+        this.props.showModal(MODAL_TYPE_EDITPROFILE, {
+        });
+        this.setState({
+            memberProfileDropdownHidden: true
+        })
+    };
     
     render() {
         const memberProfilePic = 'http://www.comingsoon.net/assets/uploads/2017/04/PrattBar640.jpg'
@@ -47,7 +57,7 @@ export default class MemberToolbar extends Component {
                 </nav>
                 <div className={toolbarDropdownClass}>
                     <ul>
-                        <li>Edit Profile</li>
+                        <li onClick={this.showUpdateProfile}>Edit Profile</li>
                         <hr/>
                         <li>Sign Out</li>
                     </ul>
@@ -56,3 +66,5 @@ export default class MemberToolbar extends Component {
         )
     }
 }
+
+export default connect(null, { showModal })(MemberToolbar)
