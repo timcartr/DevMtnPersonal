@@ -36,7 +36,7 @@ class MemberToolbar extends Component {
         let toolbarArrowClass = 'toolbarArrow'
         isHidden ? toolbarArrowClass : toolbarArrowClass = 'toolbarArrow selected'
         return(
-            <header className='adminToolbar'>
+            <header className='MemberToolbar'>
                 <nav className="toolbar_navigation">
                     <div className="toolbar_logo"><a href="">LOGO</a></div>
                     <div className="spacer" />

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom';
 
 import Home from './components/Home/Home';
-import MemberProfile from './components/Member_Profile/Member_Profile';
+import MemberProfile from './components/Member/MemberProfile';
 import AdminDashboard from './components/Admin/Admin_Dashboard/Admin_Dashboard';
 import MembersManager from './components/Admin/Members_Manager/Members_Manager';
 

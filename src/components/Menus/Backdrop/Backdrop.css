@@ -5,11 +5,14 @@
     top: 0;
     left: 0;
     background-color: rgba(0,0,0,0.3);
-    z-index: 100;
-    opacity: 0;
+    z-index: 300;
+    /* opacity: 0; */
+    /* transform: translateX(-102%); */
     transition: opacity .3s ease-out;
 }
 
 .backdrop.open {
     opacity: 1;
+    /* transform: translateX(0); */
+    z-index: 300;
 }

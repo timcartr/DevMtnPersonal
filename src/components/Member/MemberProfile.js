@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Member_Profile.css'
+import './MemberProfile.css'
 import { connect } from 'react-redux';
 import { showModal } from '../Modals/actions/modal';
 import { MODAL_TYPE_EDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIP } from '../Modals/constants/ModalTypes';

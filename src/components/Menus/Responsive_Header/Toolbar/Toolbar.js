@@ -1,11 +1,22 @@
-import React from 'react'
+import React, {Component} from 'react'
 import './Toolbar.css'
 import DrawerToggleButton from '../../DrawerToggleButton';
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
+import { showModal } from '../../../Modals/actions/modal';
+import { MODAL_TYPE_LOGIN } from '../../../Modals/constants/ModalTypes'
 
-const toolbar = props => {
+
+class Toolbar extends Component {
+
+    showLogin = () => {
+        this.props.showModal(MODAL_TYPE_LOGIN, {
+        });
+    };
+    
+    render(){
     let scrollClasses = 'toolbar-scroll'
-    if(props.scroll){
+    if(this.props.scroll){
         scrollClasses = 'toolbar-top'
     }
     return(
@@ -18,15 +29,15 @@ const toolbar = props => {
                         <Link to='/'><li>Home</li></Link>
                         <Link to='/'><li>Membership</li></Link>
                         <Link to='/'><li>Tour</li></Link>
-                        <Link to='/'><li onClick={props.login}><span>Log In</span></li></Link>
+                        <li onClick={this.props.login}><span>Log In</span></li>
                     </ul>
                 </div>
                 <div className="toolbar_toggle-button">
-                    <DrawerToggleButton click={props.drawerClickHandler}/>
+                    <DrawerToggleButton click={this.props.drawerClickHandler}/>
                 </div>
             </nav>
         </header>
-    )
+    )}
 }
 
-export default toolbar
+export default connect(null, { showModal })(Toolbar)

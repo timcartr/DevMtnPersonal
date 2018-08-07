@@ -12,7 +12,7 @@ import MemberSideDrawer from './Responsive_Member_Menu/MemberSideDrawer/MemberSi
 
 class MenusSwitcher extends Component {
     state= {
-        sideDrawerOpen: true,
+        sideDrawerOpen: false,
         backdropOpen:false,
         isTop: true,
         width: 0,
@@ -49,69 +49,62 @@ class MenusSwitcher extends Component {
         if (this.state.sideDrawerOpen) {
         backdrop = <Backdrop click={this.backdropClickHandler}/>
         }
-        let backdropClasses = 'backdrop'
+        // let backdropClasses = 'backdrop'
         if(this.state.backdropOpen){
-            backdropClasses = 'backdrop open'
+            // backdropClasses = 'backdrop open'
         }
 
-        let { user } = this.props
+        let { user } = this.props.reducer
 
         return (
-            // Bar Building Purposes
             <div>
-                <Toolbar 
-                    login = {this.props.login} 
-                    drawerClickHandler={this.drawerToggleClickHandler}
-                    scroll = {this.state.isTop}/>
-                <SideDrawer 
-                    login = {this.props.login}
-                    show={this.state.sideDrawerOpen}/>
-                    <div className={backdropClasses}>
-                    {backdrop}
+                {
+                user.username ? (
+                user.permissions === 'admin' ? 
+                    <div>
+                        <AdminToolbar 
+                            drawerClickHandler={this.drawerToggleClickHandler} />
+                        <AdminSideDrawer 
+                            login = {this.props.login}
+                            show={this.state.sideDrawerOpen}/>
+                            {/* <div className={backdropClasses}> */}
+                            {backdrop}
+                            {/* </div> */}
+                    </div> : 
+                    <div>
+                        <MemberToolbar 
+                        drawerClickHandler={this.drawerToggleClickHandler} />
+                        <MemberSideDrawer 
+                            login = {this.props.login}
+                            show={this.state.sideDrawerOpen}/>
+                            {/* <div className={backdropClasses}> */}
+                            {backdrop}
+                            {/* </div> */}
                     </div>
+                ) : (
+                    <div>
+                        <Toolbar 
+                            login = {this.props.login} 
+                            drawerClickHandler={this.drawerToggleClickHandler}
+                            scroll = {this.state.isTop}/>
+                        <SideDrawer 
+                            login = {this.props.login}
+                            show={this.state.sideDrawerOpen}/>
+                            {/* <div className={backdropClasses}> */}
+                            {backdrop}
+                            {/* </div> */}
+                    </div>
+                )
+                }
             </div>
-
-            //Uncomment this out when ready for build
-
-            // <div>
-            //     {
-            //     user.username ? (
-            //     user.permissions === 'admin' ? 
-            //         <div>
-            //             <AdminToolbar 
-            //                 drawerClickHandler={this.drawerToggleClickHandler} />
-            //             <AdminSideDrawer 
-            //                 login = {this.props.login}
-            //                 show={this.state.sideDrawerOpen}/>
-            //                 <div className={backdropClasses}>
-            //                 {backdrop}
-            //                 </div>
-            //         </div> : 
-            //             <UserMenu/>
-            //     ) : (
-            //         <div>
-            //             <Toolbar 
-            //                 login = {this.props.login} 
-            //                 drawerClickHandler={this.drawerToggleClickHandler}
-            //                 scroll = {this.state.isTop}/>
-            //             <SideDrawer 
-            //                 login = {this.props.login}
-            //                 show={this.state.sideDrawerOpen}/>
-            //                 <div className={backdropClasses}>
-            //                 {backdrop}
-            //                 </div>
-            //         </div>
-            //     )
-            //     }
-            // </div>
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        user: state.user
+        reducer: state.reducer
     }
-  }
-  
-  export default connect(mapStateToProps)(MenusSwitcher);
+}
+
+export default connect(mapStateToProps)(MenusSwitcher);

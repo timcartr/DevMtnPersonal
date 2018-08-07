@@ -1,13 +1,3 @@
-.adminToolbar {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    height: 56px;
-    z-index: 300;
-}
-
 .memberButtons {
     display: flex;
     flex-direction: column;
@@ -47,7 +37,7 @@
     height: 30px;
     width: 30px;
     /* background: purple; */
-    z-index: 500;
+    z-index: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +49,7 @@
     height: 30px;
     width: 30px;
     /* background: purple; */
-    z-index: 500;
+    z-index: 0;
     display: flex;
     align-items: center;
     justify-content: center;
