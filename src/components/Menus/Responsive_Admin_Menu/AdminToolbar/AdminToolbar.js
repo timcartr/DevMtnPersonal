@@ -35,7 +35,8 @@ class AdminToolbar extends Component {
     }
     
     render() {
-        const memberProfilePic = 'http://www.comingsoon.net/assets/uploads/2017/04/PrattBar640.jpg'
+        // let user = this.props.reducer.user
+        const user = this.props.reducer.user
         const isHidden = this.state.memberProfileDropdownHidden
         let toolbarDropdownClass = 'dropdown'
         isHidden ? toolbarDropdownClass : toolbarDropdownClass = 'dropdown show'
@@ -48,10 +49,10 @@ class AdminToolbar extends Component {
                     <div className="spacer" />
                     <div className="toolbar_navigation_items">
                         <ul>
-                            <Link to='/'><li>Peter Quill</li></Link>
+                            <Link to={`/member`}><li>{user.first_name} {user.last_name}</li></Link>
                         </ul>
                         <div className='toolbarProfilePic'>
-                            <img src={memberProfilePic} alt="" />
+                            <img src={user.profile_pic} alt="" />
                         </div>
                         <div onClick={() => this.hiddenInfoToggleClickHandler()} className={toolbarArrowClass}>
                             <FontAwesomeIcon icon={faSortDown} />
@@ -75,4 +76,10 @@ class AdminToolbar extends Component {
     }
 }
 
-export default connect(null, { showModal })(AdminToolbar)
+function mapStateToProps(state) {
+    return {
+        reducer: state.reducer
+    }
+}
+
+export default connect(mapStateToProps, { showModal })(AdminToolbar)

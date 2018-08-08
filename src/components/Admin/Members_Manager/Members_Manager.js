@@ -18,8 +18,9 @@ class Members_Manager extends Component {
     }
 
     render() {
-        console.log(this.props.reducer)
-        // let mappedMembers = this.props.reducer
+        let mappedMembers = this.props.reducer.members.map( (member,i) => {
+            return(<AdminMember key={i} member={member}/>)
+        })
         return (
         <div>
         <AdminDashboardMenu/>
@@ -28,9 +29,7 @@ class Members_Manager extends Component {
                 <h2>Manage Members</h2>
                 <p>Lorem ipsum dolor amet stumptown occupy kinfolk.</p>
             </div>
-                    <AdminMember />
-                    <AdminMember />
-                    <AdminMember />
+            {mappedMembers}
             </div>
         </div>
         )

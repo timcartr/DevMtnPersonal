@@ -29,7 +29,8 @@ class MemberToolbar extends Component {
     };
     
     render() {
-        const memberProfilePic = 'http://www.comingsoon.net/assets/uploads/2017/04/PrattBar640.jpg'
+        console.log(this.props.reducer.user)
+        const user = this.props.reducer.user
         const isHidden = this.state.memberProfileDropdownHidden
         let toolbarDropdownClass = 'dropdown'
         isHidden ? toolbarDropdownClass : toolbarDropdownClass = 'dropdown show'
@@ -42,10 +43,10 @@ class MemberToolbar extends Component {
                     <div className="spacer" />
                     <div className="toolbar_navigation_items">
                         <ul>
-                            <Link to='/'><li>Peter Quill</li></Link>
+                            <Link to='/member'><li>{user.first_name} {user.last_name}</li></Link>
                         </ul>
                         <div className='toolbarProfilePic'>
-                            <img src={memberProfilePic} alt="" />
+                            <img src={user.profile_pic} alt="" />
                         </div>
                         <div onClick={() => this.hiddenInfoToggleClickHandler()} className={toolbarArrowClass}>
                             <FontAwesomeIcon icon={faSortDown} />
@@ -57,7 +58,8 @@ class MemberToolbar extends Component {
                 </nav>
                 <div className={toolbarDropdownClass}>
                     <ul>
-                        <Link to='/member/tim'><li onClick={this.closeDropdown}>View Profile</li></Link>
+                        <Link to='/member'><li onClick={this.closeDropdown}>View Profile</li></Link>
+                        <hr/>
                         <li onClick={this.showUpdateProfile}>Edit Profile</li>
                         <hr/>
                         <li>Sign Out</li>
@@ -68,4 +70,10 @@ class MemberToolbar extends Component {
     }
 }
 
-export default connect(null, { showModal })(MemberToolbar)
+function mapStateToProps(state) {
+    return {
+        reducer: state.reducer
+    }
+}
+
+export default connect(mapStateToProps, { showModal })(MemberToolbar)

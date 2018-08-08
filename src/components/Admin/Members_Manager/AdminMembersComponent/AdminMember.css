@@ -29,6 +29,14 @@
     border-radius: 50%;
     width:75px;
     height:75px;
+    overflow: hidden;
+    border: 1px solid #80808080;
+}
+
+.photoWrapper img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
 }
 
 .moreInfoToggle{

@@ -30,6 +30,9 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_USER_DATA:
         return Object.assign({}, state, {user:action.payload})
+        
+        case UPDATE_MEMBERS_DATA:
+        return Object.assign({}, state, {members:action.payload})
 
         default: 
             return state

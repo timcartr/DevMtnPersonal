@@ -35,7 +35,7 @@ class AdminMember extends Component {
     };
 
     render() {
-
+        const member = this.props.member
         const isHidden = this.state.memberInfoHidden      
         let MoreMemberInfoClass = 'moreMemberInfo Hide'
         isHidden ? MoreMemberInfoClass : MoreMemberInfoClass = 'moreMemberInfo Display'
@@ -45,11 +45,11 @@ class AdminMember extends Component {
             <div className='alwaysDisplay'>
                 <div className='photoInfo'>
                     <div className='photoWrapper'>
-                    <img src="" alt=""/>
+                    <img src={member.profile_pic} alt=""/>
                     </div>
                     <div className='nameMembership'>
-                        <h2>Bear Grylls</h2>
-                        <p>Monthly Member</p>
+                        <h2>{member.first_name} {member.last_name}</h2>
+                        <p>{member.membership_level}</p>
                     </div>
                 </div>
                 <div onClick={() => this.hiddenInfoToggleClickHandler()} className='moreInfoToggle'>
@@ -63,8 +63,8 @@ class AdminMember extends Component {
                         <p><span>Member Since:</span> July 24, 2018</p>
                         <p><span>Renewal Date:</span> Aug 24, 2018</p>
                         <p><span>Certifications:</span> Safety, Advanced Safety</p>
-                        <p><span>Email:</span> email@example.com</p>
-                        <p><span>Phone:</span> 888.888.8888</p>
+                        <p><span>Email:</span> {member.email}</p>
+                        <p><span>Phone:</span> {member.phone}</p>
                     </div>
                     <div className='hiddenMembersButtons'>
                         <button onClick={this.showUpdateProfile}>Edit Member Information</button>

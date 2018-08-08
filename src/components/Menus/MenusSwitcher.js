@@ -60,7 +60,7 @@ class MenusSwitcher extends Component {
             <div>
                 {
                 user.username ? (
-                user.permissions === 'admin' ? 
+                user.membership_level === 'Admin' ? 
                     <div>
                         <AdminToolbar 
                             drawerClickHandler={this.drawerToggleClickHandler} />

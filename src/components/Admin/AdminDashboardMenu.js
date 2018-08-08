@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import './AdminDashboardMenu.css'
 import {Link} from 'react-router-dom'
-// import DrawerToggleButton from '../../DrawerToggleButton'
+import { connect } from 'react-redux'
+
 import dashboardIcon from '../../img/SVG/Asset1.svg'
 import MembersIcon from '../../img/SVG/Asset2.svg'
 import MetricsIcon from '../../img/SVG/Asset3.svg'
@@ -13,7 +14,7 @@ import MarketplaceIcon from '../../img/SVG/Asset7.svg'
 class AdminDashboardMenu extends Component {
     
     render(){
-        const memberProfilePic = 'http://www.comingsoon.net/assets/uploads/2017/04/PrattBar640.jpg'
+        const user = this.props.reducer.user
         let drawerClasses = 'adminDashboardMenu'
         if(this.props.sideDrawerOpen){
             drawerClasses = 'adminDashboardMenu open'
@@ -32,9 +33,9 @@ class AdminDashboardMenu extends Component {
                     </ul>
                     <div className="adminDashboardMenu-profile">
                         <div className='toolbarProfilePic'>
-                                <img src={memberProfilePic} alt="" />
+                                <img src={user.profile_pic} alt="" />
                         </div>
-                        <Link to='/member/tim'>View Profile</Link>
+                        <Link to='/member'>View Profile</Link>
                     </div>
                 </div>
             </nav>
@@ -42,4 +43,10 @@ class AdminDashboardMenu extends Component {
     }
 }
 
-export default AdminDashboardMenu
+function mapStateToProps(state) {
+    return {
+        reducer: state.reducer
+    }
+}
+
+export default connect(mapStateToProps)(AdminDashboardMenu)

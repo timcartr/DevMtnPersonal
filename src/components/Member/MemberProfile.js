@@ -17,6 +17,7 @@ class Member_Profile extends Component {
         };
     
     render() {
+        const member = this.props.reducer.user
         let Background = 'http://www.comingsoon.net/assets/uploads/2017/04/PrattBar640.jpg'
         return (
             <div className='memberProfile'>
@@ -24,7 +25,7 @@ class Member_Profile extends Component {
                     <div className='memberProfileBG' style={{backgroundImage:`url(${Background})`}}/>
                 </div>
                 <div className='memberProfileTop'>
-                    <h2>Peter Quill</h2>
+                    <h2>{member.first_name} {member.last_name}</h2>
                     <h3>Monthly Membership</h3>
                     <div>
                         <div className='profileCircle' style={{backgroundImage:`url(${Background})`}}/>
@@ -47,4 +48,10 @@ class Member_Profile extends Component {
     }
 }
 
-export default connect(null, { showModal })(Member_Profile)
+function mapStateToProps(state) {
+    return {
+        reducer: state.reducer
+    }
+}
+
+export default connect(mapStateToProps, { showModal })(Member_Profile)
