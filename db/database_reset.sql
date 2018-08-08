@@ -7,7 +7,6 @@ CREATE TABLE Members (
     Email varchar(99),
     Phone varchar(99),
     Profile_Pic text,
-    Membership_Level text
 );
 
 CREATE TABLE Memberships (
@@ -34,3 +33,6 @@ VALUES ('PeterGryffin', 'Peter', 'Griffin', 'peter@aol.com', '5555555555', 'http
 
 insert into Members (username, first_name, last_name, email, phone, profile_pic, membership_level)
 VALUES ('meg', 'Meg', 'Griffin', 'meg@aol.com', '2222222222', 'https://vignette.wikia.nocookie.net/familyguy/images/3/34/FGuy_DialMegForMurder_0237F.jpg/revision/latest?cb=20100120224702', 'Yearly Membership');
+
+insert into Memberships (type,daily_rate,length,cost,member_id,start_date,end_date)
+values ('Daily Membership','8','1',8*1,1,'Jun-04-2018','Jun-05-2018')

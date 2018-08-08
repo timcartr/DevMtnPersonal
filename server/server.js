@@ -40,11 +40,15 @@ app.get('/auth/callback', async (req,res) => {
     let { sub, email, name, picture } = resWithUserData.data
 
     let foundUser = await db.find_user([sub])
-    if(foundUser[0]){
+    console.log(foundUser[0])
+    if(foundUser[0].membership_level === 'Admin'){
     req.session.user = foundUser[0];
-    console.log(req.session.user)
     
     res.redirect('/#/admin/members')
+    } else if(foundUser[0].type !== 'Admin'){
+    req.session.user = foundUser[0];
+
+    res.redirect('/#/member')
     } else {
         let createdUser = await db.create_member([name,sub,email,picture])
         req.session.user = createdUser
@@ -52,15 +56,9 @@ app.get('/auth/callback', async (req,res) => {
     }
 })
 
-app.get('/api/user-data', (req, res) => {
-    if (req.session.user) {
-        res.status(200).send(req.session.user)
-    } else {
-        res.status(401).send('Nice try sucka!')
-    }
-})
-
+app.get('/api/user-data', ctrl.getUser)
 app.get('/api/members', ctrl.getAllMembers)
+app.put('/api/updateMember', ctrl.updateMember)
 
 
 massive(CONNECTION_STRING).then( connection => {

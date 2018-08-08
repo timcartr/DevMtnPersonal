@@ -39,7 +39,8 @@ class AdminMember extends Component {
         const isHidden = this.state.memberInfoHidden      
         let MoreMemberInfoClass = 'moreMemberInfo Hide'
         isHidden ? MoreMemberInfoClass : MoreMemberInfoClass = 'moreMemberInfo Display'
-        
+        let startDate = new Date(member.start_date);
+        let endDate = new Date(member.end_date);
         return (
         <div className='adminMember'>
             <div className='alwaysDisplay'>
@@ -60,8 +61,8 @@ class AdminMember extends Component {
                 <hr/>
                 <div className='MoreMemberInfoFlex'>
                     <div className='hiddenMemberInfo'>
-                        <p><span>Member Since:</span> July 24, 2018</p>
-                        <p><span>Renewal Date:</span> Aug 24, 2018</p>
+                        <p><span>Member Since:</span> {startDate.toDateString()}</p>
+                        <p><span>Renewal Date:</span> {endDate.toDateString()}</p>
                         <p><span>Certifications:</span> Safety, Advanced Safety</p>
                         <p><span>Email:</span> {member.email}</p>
                         <p><span>Phone:</span> {member.phone}</p>
