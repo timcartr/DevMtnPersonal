@@ -29,10 +29,10 @@ CREATE TABLE Certifications (
 );
 
 insert into Members (username, first_name, last_name, email, phone, profile_pic, membership_level)
-VALUES ('PeterGryffin', 'Peter', 'Griffin', 'peter@aol.com', '5555555555', 'https://static.comicvine.com/uploads/original/11132/111329761/5986548-peter+g.jpg', 'Monthly Membership');
+VALUES ('Spiderman', 'Peter', 'Parker', 'peter@theavengers.com', '5555555555', 'http://cdn1.sciencefiction.com/wp-content/uploads/2018/01/tom-holland-peter-parker-1.jpg', 'Monthly Membership');
 
 insert into Members (username, first_name, last_name, email, phone, profile_pic, membership_level)
-VALUES ('meg', 'Meg', 'Griffin', 'meg@aol.com', '2222222222', 'https://vignette.wikia.nocookie.net/familyguy/images/3/34/FGuy_DialMegForMurder_0237F.jpg/revision/latest?cb=20100120224702', 'Yearly Membership');
+VALUES ('GreenArrow', 'Oliver', 'Queen', 'Ollie@justiceleague.com', '2222222222', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5syTM2chHmE2v0ivLskLYx_yjaJfszOu626qmSFkKlifQ5XowNg', 'Yearly Membership');
 
 insert into Memberships (type,daily_rate,length,cost,member_id,start_date,end_date)
 values ('Daily Membership','8','1',8*1,1,'Jun-04-2018','Jun-05-2018')

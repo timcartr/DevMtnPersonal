@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { connect } from 'react-redux';
+import { connect, withRouter } from 'react-redux';
 
 import './MemberProfile.css'
 
@@ -31,6 +31,7 @@ class Member_Profile extends Component {
         const member = this.props.reducer.user
         let startDate = new Date(member.start_date);
         let endDate = new Date(member.end_date);
+        // console.log(this.props.reducer.user)
         return (
             <div className='memberProfile'>
                 <div className='bgOverflow'>

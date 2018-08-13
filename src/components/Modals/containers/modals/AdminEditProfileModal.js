@@ -1,22 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { PropTypes } from 'prop-types'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import axios from 'axios'
 
 import { hideModal } from '../../actions/modal';
 import Modal from '../../components/Modal';
 import './Modals.css'
 
-const AdminEditProfile = ({ title, afterClose, hideModal }) => {
-  const onClose = () => {
+class AdminEditProfile extends Component {
+  state = {
+
+  }
+
+  onClose = () => {
     hideModal();
 
-    if (afterClose) {
-      afterClose();
-    }
   };
 
-  return (
-    <Modal onClose={onClose}>
+  render(){
+
+    return (
+      <Modal onClose={this.onClose}>
       <div className='modalStyle'>
         <h2>Edit Member Information</h2>
         <p>First Name</p>
@@ -35,15 +39,16 @@ const AdminEditProfile = ({ title, afterClose, hideModal }) => {
         <input type="text" placeholder='example@email.com'/>
       </div>
       <div className='updateProfileButtons'>
-        <button onClick={onClose}>
+        <button onClick={this.onClose}>
           Save
         </button>
-        <button onClick={onClose}>
+        <button onClick={this.onClose}>
           Cancel
         </button>
       </div>
     </Modal>
   );
+}
 };
 
 Notification.propTypes = {

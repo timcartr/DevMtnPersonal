@@ -19,12 +19,12 @@ class Router extends Component {
         }
     
     render() {
-        console.log(this.props.reducer.user.first_name)
         return (
             <Switch>
                 <Route exact path='/' component={Home} login = {this.login}/>
                 {/* <Route path={`/member/${this.props.name}`} component={Member_Profile} /> */}
-                <Route path={`/member`} component={MemberProfile} />
+                <Route exact path={`/member`} component={MemberProfile} />
+                <Route path={`/member/:id`} component={MemberProfile} />
                 <Route exact path='/admin' component={AdminDashboard} />
                 <Route path={`/admin/members`} component={MembersManager} />
                 {/* <Route path={`/checkout`} component={CheckoutForm} /> */}

@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer';
 // Modals
 import ModalRoot from './components/Modals/containers/ModalRoot'
 
-export default class App extends Component {
+class App extends Component {
 
   login() {
     let { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID } = process.env
@@ -34,3 +34,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default (App)

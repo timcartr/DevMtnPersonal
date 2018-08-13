@@ -26,7 +26,7 @@ export default class Header extends Component {
     }
 
     render() {
-        console.log(this.state.mobileMenu)
+        // console.log(this.state.mobileMenu)
         return (
             <div className='Header'>
                 <img src="" alt="Wasatch Woodworking Logo"/>

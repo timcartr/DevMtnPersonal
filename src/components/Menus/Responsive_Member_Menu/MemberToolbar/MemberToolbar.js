@@ -29,7 +29,6 @@ class MemberToolbar extends Component {
     };
     
     render() {
-        console.log(this.props.reducer.user)
         const user = this.props.reducer.user
         const isHidden = this.state.memberProfileDropdownHidden
         let toolbarDropdownClass = 'dropdown'

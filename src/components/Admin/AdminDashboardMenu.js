@@ -35,7 +35,7 @@ class AdminDashboardMenu extends Component {
                         <div className='toolbarProfilePic'>
                                 <img src={user.profile_pic} alt="" />
                         </div>
-                        <Link to='/member'>View Profile</Link>
+                        <Link to={`/member/${user.first_name}`}>View Profile</Link>
                     </div>
                 </div>
             </nav>
