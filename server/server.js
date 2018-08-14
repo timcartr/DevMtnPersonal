@@ -30,6 +30,9 @@ app.get('/api/user-data', ctrl.getUser)
 app.get('/api/members', ctrl.getAllMembers)
 app.put('/api/updateMember/:id', ctrl.updateMember)
 app.put('/api/updateMembership/:id', ctrl.updateMembership)
+app.put('/api/updateMemberAdmin/:id', ctrl.updateMemberAdmin)
+app.put('/api/adminUpdateMembershipLevel/:id', ctrl.adminUpdateMembership)
+app.delete('/api/deleteMember/:id', ctrl.deleteMember)
 app.get('/auth/callback', async (req,res) => {
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
@@ -47,19 +50,18 @@ app.get('/auth/callback', async (req,res) => {
 
     let foundUser = await db.find_user([sub])
     // console.log(foundUser[0])
-    if(foundUser[0].membership_level === 'Admin'){
-    req.session.user = foundUser[0];
-    
-    res.redirect(`/#/admin/members`)
-    } else if(foundUser[0].type !== 'Admin'){
-    req.session.user = foundUser[0];
-
+    if(!foundUser[0]){
+    let createdUser = await db.create_member([name,sub,email,picture])
+    let updateMemeberships = await db.create_membership([createdUser[0].member_id])
+    req.session.user = createdUser[0]
     res.redirect(`/#/member/${req.session.user.member_id}`)
-    } else {
-        let createdUser = await db.create_member([name,sub,email,picture])
-        req.session.user = createdUser
-        res.redirect(`/#/member/${req.session.user.member_id}`)
-    }
+    } else if(foundUser[0].membership_level !== 'Admin'){
+    req.session.user = foundUser[0];
+    res.redirect(`/#/member/${req.session.user.member_id}`)
+    } else if(foundUser[0].membership_level === 'Admin'){
+        req.session.user = foundUser[0];
+        res.redirect(`/#/admin/members`)
+        }
 })
 
 

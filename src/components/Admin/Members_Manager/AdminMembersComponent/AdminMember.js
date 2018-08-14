@@ -5,7 +5,7 @@ import { faSortUp } from '@fortawesome/free-solid-svg-icons'
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { showModal } from '../../../Modals/actions/modal';
-import { MODAL_TYPE_ADMINEDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIP, MODAL_TYPE_DELETEMEMBER } from '../../../Modals/constants/ModalTypes';
+import { MODAL_TYPE_ADMINEDITPROFILE, MODAL_TYPE_ADMINUPGRADEMEMBERSHIP, MODAL_TYPE_DELETEMEMBER } from '../../../Modals/constants/ModalTypes';
 
 class AdminMember extends Component {
     state = {
@@ -20,17 +20,28 @@ class AdminMember extends Component {
         }
 
     showUpdateProfile = () => {
+        const member = this.props.member
         this.props.showModal(MODAL_TYPE_ADMINEDITPROFILE, {
+            first_name: member.first_name,
+            last_name: member.last_name,
+            email: member.email,
+            phone: member.phone,
+            start_date: member.start_date,
+            end_date: member.end_date,
+            member_id:member.member_id
         });
     };
 
     showUpgradeMembership = () => {
-        this.props.showModal(MODAL_TYPE_UPGRADEMEMBERSHIP, {
+        this.props.showModal(MODAL_TYPE_ADMINUPGRADEMEMBERSHIP, {
+            membership_level:this.props.member.membership_level,
+            member_id:this.props.member.member_id
         });
     };
 
     showDeleteMember = () => {
         this.props.showModal(MODAL_TYPE_DELETEMEMBER, {
+            member_id:this.props.member.member_id
         });
     };
 

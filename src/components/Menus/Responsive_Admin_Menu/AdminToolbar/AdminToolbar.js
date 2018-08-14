@@ -49,7 +49,7 @@ class AdminToolbar extends Component {
                     <div className="spacer" />
                     <div className="toolbar_navigation_items">
                         <ul>
-                            <Link to={`/member`}><li>{user.first_name} {user.last_name}</li></Link>
+                            <Link to={`/member/${user.member_id}`}><li>{user.first_name} {user.last_name}</li></Link>
                         </ul>
                         <div className='toolbarProfilePic'>
                             <img src={user.profile_pic} alt="" />
@@ -64,7 +64,7 @@ class AdminToolbar extends Component {
                 </nav>
                 <div className={toolbarDropdownClass}>
                     <ul>
-                        <Link to='/admin'><li onClick={this.closeDropdown}>Dashboard</li></Link>
+                        <Link to='/admin/members'><li onClick={this.closeDropdown}>Dashboard</li></Link>
                         <hr/>
                         <li onClick={this.showUpdateProfile}>Edit Profile</li>
                         <hr/>

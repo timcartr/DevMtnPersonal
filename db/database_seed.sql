@@ -29,10 +29,13 @@ CREATE TABLE Certifications (
 );
 
 insert into Members (username, first_name, last_name, email, phone, profile_pic, membership_level)
-VALUES ('Spiderman', 'Peter', 'Parker', 'peter@theavengers.com', '5555555555', 'http://cdn1.sciencefiction.com/wp-content/uploads/2018/01/tom-holland-peter-parker-1.jpg', 'Monthly Membership');
+VALUES ('Spiderman', 'Peter', 'Parker', 'peter@theavengers.com', '5555555555', 'https://images.indianexpress.com/2018/06/114811_434019-759.jpg', 'Monthly Membership');
 
 insert into Members (username, first_name, last_name, email, phone, profile_pic, membership_level)
-VALUES ('GreenArrow', 'Oliver', 'Queen', 'Ollie@justiceleague.com', '2222222222', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5syTM2chHmE2v0ivLskLYx_yjaJfszOu626qmSFkKlifQ5XowNg', 'Yearly Membership');
+VALUES ('GreenArrow', 'Oliver', 'Queen', 'Ollie@justiceleague.com', '2222222222', 'https://heroichollywood.b-cdn.net/wp-content/uploads/2018/01/Arrow-Season-6-CW-DC-Stephen-Amell.jpg?x42694', 'Yearly Membership');
+
+insert into Members (username, first_name, last_name, email, phone, profile_pic, membership_level)
+VALUES ('WonderWoman', 'Diana', 'Prince', 'Diana@justiceleague.com', '882.834.9283', 'https://cdn3.movieweb.com/i/article/2b8XxiINildrKbllDMeTi7INBNFPvR/1107:50/Wonder-Woman-2-Set-Photo-Smithsonian-Event.jpg', 'Monthy Membership');
 
 insert into Memberships (type,daily_rate,length,cost,member_id,start_date,end_date)
 values ('Daily Membership','8','1',8*1,1,'Jun-04-2018','Jun-05-2018')

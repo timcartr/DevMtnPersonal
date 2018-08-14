@@ -38,7 +38,6 @@ class UpgradeMembershipModal extends Component {
   }
 
   render(){
-    console.log(this.state.membershipSelection)
     return (
       <Modal onClose={this.onClose}>
         <div className='modalStyleButton'>
