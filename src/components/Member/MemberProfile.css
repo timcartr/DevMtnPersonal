@@ -38,6 +38,35 @@
     background-size: cover;
     border: 6px solid white;
     margin-top: 60px;
+    overflow: hidden;
+}
+
+.updateProfilePic {
+    height: 0;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.showUpdateProfilePic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Overpass", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    color: white;
+    background: rgba(0,0,0,.5);
+    text-align: center;
+    position: relative;
+    margin-top: 210px;
+    height: 80px;
+    padding-bottom: 27px;
+    cursor: pointer;
+}
+
+.cameraIcon {
+    width: 30px;
+    padding-right: 10px;
 }
 
 .memberProfileTop h2{
@@ -75,4 +104,12 @@
     font-size: 22px;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+.modalProfilePicUploader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin-bottom: 40px;
 }

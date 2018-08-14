@@ -3,12 +3,16 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 
 import './MemberProfile.css'
+import cameraIcon from '../../img/camera.svg'
 
 import { updateUserData } from '../../ducks/reducer'
 import { showModal } from '../Modals/actions/modal';
-import { MODAL_TYPE_EDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIP } from '../Modals/constants/ModalTypes';
+import { MODAL_TYPE_EDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIP, MODAL_TYPE_EDITPROFILEPIC } from '../Modals/constants/ModalTypes';
 
 class Member_Profile extends Component {
+    state = {
+        editPic: false
+    }
 
     componentDidMount() {
         axios.get('/api/user-data').then(res => {
@@ -19,19 +23,43 @@ class Member_Profile extends Component {
 
     showUpdateProfile = () => {
         this.props.showModal(MODAL_TYPE_EDITPROFILE, {
-        });
-        };
+        })
+    }
 
     showUpgradeMembership = () => {
         this.props.showModal(MODAL_TYPE_UPGRADEMEMBERSHIP, {
-        });
-        };
+        })
+    }
     
+    showEditPic = () => {
+        this.setState(()=> {
+            return{
+                editPic: true
+            }
+        })
+    }
+
+    hideEditPic = () => {
+        this.setState(()=> {
+            return{
+                editPic: false
+            }
+        })
+    }
+    
+    showEditProfilePicModal = () => {
+        this.props.showModal(MODAL_TYPE_EDITPROFILEPIC, {
+        })
+        this.setState({
+            editPic: false
+        })
+    }
+
     render() {
         const member = this.props.reducer.user
         let startDate = new Date(member.start_date);
         let endDate = new Date(member.end_date);
-        // console.log(this.props.reducer.user)
+        let updateProfilePic = this.state.editPic ? 'showUpdateProfilePic' : 'updateProfilePic'
         return (
             <div className='memberProfile'>
                 <div className='bgOverflow'>
@@ -41,10 +69,21 @@ class Member_Profile extends Component {
                     <h2>{member.first_name} {member.last_name}</h2>
                     <h3>{member.membership_level}</h3>
                     <div>
-                        <div className='profileCircle' style={{backgroundImage:`url(${member.profile_pic})`}}/>
+                        <div className='profileCircle' style={{backgroundImage:`url(${member.profile_pic})`}} onMouseEnter={this.showEditPic} 
+                            onMouseLeave={this.hideEditPic}>
+
+                            {/* Update Profile Pic */}
+                            <div className={updateProfilePic} onClick={this.showEditProfilePicModal}>
+                                <img src={cameraIcon} alt="" className='cameraIcon'/>
+                                Update Profile Pic
+                            </div>
+
+                        </div>
                     </div>
                 </div>
                 <div className='memberLower'>
+
+
                     <p><span>Member Since:</span> {startDate.toDateString()}</p>
                     <p><span>Membership Expires:</span> {endDate.toDateString()}</p>
                     <p><span>Certifications:</span> Safety, Advanced Safety</p>

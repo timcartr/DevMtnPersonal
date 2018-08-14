@@ -54,7 +54,6 @@ module.exports={
         const db = req.app.get('db')
         const { id } = req.params
         
-        console.log(req.params)
         let updatedMembership = await db.update_membership_level_admin([req.body.membership_level, id])
         // console.log('updatedMembership', updatedMembership)
         let foundUser = await db.find_user([updatedMembership[0].auth_id])
@@ -66,5 +65,16 @@ module.exports={
 
         // console.log(req.params)
         db.delete_member([req.params.id])
+    },
+    updatePic: async (req,res) => {
+        const db = req.app.get('db')
+        const { id } = req.params
+        const { profile_pic } = req.body
+
+
+        console.log(req.params)
+        console.log(req.body)
+        let updatedProfilePic = await db.update_profile_pic([profile_pic, id])
+        res.send(updatedProfilePic)
     }
 }

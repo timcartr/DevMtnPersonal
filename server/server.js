@@ -4,11 +4,12 @@ const axios = require('axios')
 const massive = require('massive')
 const session = require('express-session')
 const bodyParser = require('body-parser')
-
 const ctrl = require('./controller')
-
+const AWS = require('aws-sdk')
 const app = express()
-app.use(bodyParser.json())
+
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 
 const { 
     SERVER_PORT, 
@@ -18,6 +19,14 @@ const {
     SESSION_SECRET, 
     CONNECTION_STRING
 } = process.env
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION,
+})
+
+const S3 = new AWS.S3()
 
 app.use(session({
     secret: SESSION_SECRET,
@@ -33,6 +42,7 @@ app.put('/api/updateMembership/:id', ctrl.updateMembership)
 app.put('/api/updateMemberAdmin/:id', ctrl.updateMemberAdmin)
 app.put('/api/adminUpdateMembershipLevel/:id', ctrl.adminUpdateMembership)
 app.delete('/api/deleteMember/:id', ctrl.deleteMember)
+app.put('/api/updatePic/:id', ctrl.updatePic)
 app.get('/auth/callback', async (req,res) => {
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
@@ -63,6 +73,30 @@ app.get('/auth/callback', async (req,res) => {
         res.redirect(`/#/admin/members`)
         }
 })
+app.post('/api/s3', (req, res) => {
+    const photo = req.body;
+    const buf = new Buffer(photo.file.replace(/^data:image\/\w+;base64,/, ''), 'base64');
+
+    const params = {
+        Bucket: process.env.AWS_BUCKET,
+        Body: buf,
+        Key: photo.filename,
+        ContentType: photo.filetype,
+        ACL: 'public-read',
+    };
+
+    S3.upload(params, (err, data) => {
+        let response, code;
+        if (err) {
+            response = err;
+            code = 500;
+        } else {
+            response = data;
+            code = 200;
+        }
+        res.status(code).send(response);
+    });
+});
 
 
 

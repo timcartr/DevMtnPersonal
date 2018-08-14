@@ -8,6 +8,7 @@ import AdminEditProfile from './modals/AdminEditProfileModal';
 import UpgradeMembership from './modals/UpgradeMembershipModal';
 import AdminUpgradeMembership from './modals/AdminUpgradeMembershipModal';
 import DeleteMember from './modals/DeleteMemberModal';
+import EditProfilePic from './modals/EditProfilePicModal';
 import Login from './modals/LoginModal';
 
 import { 
@@ -18,6 +19,7 @@ import {
   MODAL_TYPE_UPGRADEMEMBERSHIP,
   MODAL_TYPE_ADMINUPGRADEMEMBERSHIP,
   MODAL_TYPE_DELETEMEMBER,
+  MODAL_TYPE_EDITPROFILEPIC,
   MODAL_TYPE_LOGIN
 } from '../constants/ModalTypes';
 
@@ -29,6 +31,7 @@ const MODAL_COMPONENTS = {
   [MODAL_TYPE_UPGRADEMEMBERSHIP]: UpgradeMembership,
   [MODAL_TYPE_ADMINUPGRADEMEMBERSHIP]: AdminUpgradeMembership,
   [MODAL_TYPE_DELETEMEMBER]: DeleteMember,
+  [MODAL_TYPE_EDITPROFILEPIC]: EditProfilePic,
   [MODAL_TYPE_LOGIN]: Login
 };
 
