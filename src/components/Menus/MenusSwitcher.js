@@ -22,7 +22,6 @@ class MenusSwitcher extends Component {
     componentDidMount() {
     document.addEventListener('scroll', () => {
         const isTop = window.scrollY < window.innerHeight-50;
-
         if (isTop !== this.state.isTop) {
             this.setState({ isTop })
         }
@@ -44,33 +43,29 @@ class MenusSwitcher extends Component {
     }
 
     render() {
-        let backdrop;
+        let { user } = this.props.reducer
 
+        //backdrop
+        let backdrop;
         if (this.state.sideDrawerOpen) {
         backdrop = <Backdrop click={this.backdropClickHandler}/>
         }
-        // let backdropClasses = 'backdrop'
-        if(this.state.backdropOpen){
-            // backdropClasses = 'backdrop open'
-        }
+        // let backdropClasses = this.state.backdropOpen ? 'backdrop open' : 'backdrop'
 
-        let { user } = this.props.reducer
-
-        return (
-            <div>
-                {
-                user.username ? (
-                user.membership_level === 'Admin' ? 
+        if(user.member_id){
+            if(user.membership_level === 'Admin'){
+                return(
                     <div>
-                        <AdminToolbar 
-                            drawerClickHandler={this.drawerToggleClickHandler} />
-                        <AdminSideDrawer 
-                            login = {this.props.login}
+                        <AdminToolbar drawerClickHandler={this.drawerToggleClickHandler} />
+                        <AdminSideDrawer login = {this.props.login}
                             show={this.state.sideDrawerOpen}/>
                             {/* <div className={backdropClasses}> */}
                             {backdrop}
                             {/* </div> */}
-                    </div> : 
+                    </div>
+                )
+            }else {
+                return(
                     <div>
                         <MemberToolbar 
                         drawerClickHandler={this.drawerToggleClickHandler} />
@@ -81,23 +76,22 @@ class MenusSwitcher extends Component {
                             {backdrop}
                             {/* </div> */}
                     </div>
-                ) : (
-                    <div>
-                        <Toolbar 
-                            login = {this.props.login} 
-                            drawerClickHandler={this.drawerToggleClickHandler}
-                            scroll = {this.state.isTop}/>
-                        <SideDrawer 
-                            login = {this.props.login}
-                            show={this.state.sideDrawerOpen}/>
-                            {/* <div className={backdropClasses}> */}
-                            {backdrop}
-                            {/* </div> */}
-                    </div>
                 )
-                }
-            </div>
-        )
+            }
+        }else {
+            return(
+                <div>
+                    <Toolbar login = {this.props.login} 
+                        drawerClickHandler={this.drawerToggleClickHandler}
+                        scroll = {this.state.isTop}/>
+                    <SideDrawer login = {this.props.login}
+                        show={this.state.sideDrawerOpen}/>
+                        {/* <div className={backdropClasses}> */}
+                        {backdrop}
+                        {/* </div> */}
+                </div>
+            )
+        }
     }
 }
 

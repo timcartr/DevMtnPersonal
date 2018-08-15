@@ -43,17 +43,17 @@ class UpgradeMembershipModal extends Component {
         <div className='modalStyleButton'>
           <h2>Please Select a Membership Level</h2>
           <button 
-          className={this.state.membershipSelection === 'Daily Membership' ? 'selectedButton' : null}
-          onClick={() => this.membershipSelector('Daily Membership')}>
-            Single Day
+          className={this.state.membershipSelection === 'Unlimited Access' ? 'selectedButton' : null}
+          onClick={() => this.membershipSelector('Unlimited Access')}>
+            Unlimited Access
           </button>
-          <button className={this.state.membershipSelection === 'Monthly Membership' ? 'selectedButton' : null}
-          onClick={() => this.membershipSelector('Monthly Membership')}>
-          Monthly Membership
+          <button className={this.state.membershipSelection === 'Vip Access' ? 'selectedButton' : null}
+          onClick={() => this.membershipSelector('Vip Access')}>
+          Vip Access
           </button>
-          <button className={this.state.membershipSelection === 'Yearly Membership' ? 'selectedButton' : null}
-          onClick={() => this.membershipSelector('Yearly Membership')}>
-          Yearly Membership</button>
+          <button className={this.state.membershipSelection === 'Standard Access' ? 'selectedButton' : null}
+          onClick={() => this.membershipSelector('Standard Access')}>
+          Standard Access</button>
         </div>
         <div className='updateProfileButtons'>
           <button onClick={this.save}>

@@ -166,6 +166,25 @@
     margin-bottom: 20px;
 }
 
+#gotoprofilebutton {
+    font-family: "Chivo", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    width: 250px;
+    border-radius: 4px;
+    border: 1px solid white;
+    margin: 40px auto;
+    margin-bottom: 20px;
+}
+
+#paymentSuccessful {
+    font-size:16px;
+    font-weight: 200;
+    margin-bottom: 30px;
+}
+
 .signupfooter {
     display: flex;
     flex-direction: column;
@@ -195,3 +214,9 @@
     color: #999999;
     text-decoration: none;
 }
+
+.signupinput img {
+    width: 50%;
+    margin: 0 auto;
+}
+

@@ -10,6 +10,7 @@ import AdminUpgradeMembership from './modals/AdminUpgradeMembershipModal';
 import DeleteMember from './modals/DeleteMemberModal';
 import EditProfilePic from './modals/EditProfilePicModal';
 import Login from './modals/LoginModal';
+import AddPhone from './modals/AddPhoneModal';
 
 import { 
   MODAL_TYPE_NOTIFICATION, 
@@ -20,7 +21,8 @@ import {
   MODAL_TYPE_ADMINUPGRADEMEMBERSHIP,
   MODAL_TYPE_DELETEMEMBER,
   MODAL_TYPE_EDITPROFILEPIC,
-  MODAL_TYPE_LOGIN
+  MODAL_TYPE_LOGIN,
+  MODAL_TYPE_ADDPHONE
 } from '../constants/ModalTypes';
 
 const MODAL_COMPONENTS = {
@@ -32,7 +34,8 @@ const MODAL_COMPONENTS = {
   [MODAL_TYPE_ADMINUPGRADEMEMBERSHIP]: AdminUpgradeMembership,
   [MODAL_TYPE_DELETEMEMBER]: DeleteMember,
   [MODAL_TYPE_EDITPROFILEPIC]: EditProfilePic,
-  [MODAL_TYPE_LOGIN]: Login
+  [MODAL_TYPE_LOGIN]: Login,
+  [MODAL_TYPE_ADDPHONE]: AddPhone
 };
 
 const ModalRoot = ({ type, props }) => {

@@ -9,37 +9,40 @@ import Green1 from '../../img/SVG/Asset8.svg'
 import Grey2 from '../../img/SVG/Asset9.svg'
 import Grey3 from '../../img/SVG/Asset10.svg'
 import Green2 from '../../img/SVG/Asset11.svg'
-import Green3 from '../../img/SVG/Asset12.svg'
 import GreenCheck from '../../img/SVG/Asset13.svg'
+import Confirmation from '../../img/SVG/Asset14.svg'
 
 class SignUp extends Component {
     state = {
         box: 1,
-        first_name: '',
-        last_name:'',
-        email:'',
-        phone:'',
-        username:'',
-        membership_level:''
+        membership_level:'',
+        cost:''
+    }
+
+    componentDidMount() {
+        axios.get('/api/user-data').then(res => {
+            // invoke action creator to update redux state
+            this.props.updateUserData(res.data)
+            })
     }
 
     setBoxNum1 = () => {
         this.setState({
             box:1
         })
-        this.save()
     }
+
     setBoxNum2 = () => {
         this.setState({
             box:2
         })
-        this.save()
+        this.updateMembershipData()
     }
+
     setBoxNum3 = () => {
         this.setState({
             box:3
         })
-        this.save()
     }
 
     handleFirstName(val){
@@ -72,33 +75,36 @@ class SignUp extends Component {
         }) 
     }
 
-    handleMembershipLevel(val){
+    handleMembershipLevel(membership, cost){
         this.setState({
-            membership_level: val
+            membership_level: membership,
+            cost: cost
         }) 
     }
 
-    save(){
-        axios.put(`/api/updateMember/${this.state.member_id}`, this.state).then(res=> {
+    updateMembershipData(){
+        axios.put(`/api/updateMembership/${this.props.reducer.user.member_id}`, {
+            membership_level: this.state.membership_level,
+            cost: this.state.cost
+        }).then(res=> {
         this.props.updateUserData(res.data[0])
         })
     }
 
     render() {
-        console.log(this.props)
+        console.log(this.props.reducer.user)
         return (
         <div className='signUpBG'>
-
-        {/* Box 1 */}
+            {/* Box 1 */}
             <div className={this.state.box === 1 ? 'signup' : 'signup off'}>
                 <div className='steps'>
                     <div className='stepsflex'>
                         <img src={Green1} alt=""/>
-                        <p>Member Details</p>
+                        <p>Membership</p>
                     </div>
                     <div className='stepsflex'>
                         <img src={Grey2} alt=""/>
-                        <p>Membership</p>
+                        <p>Payment</p>
                     </div>
                     <div className='stepsflex'>
                         <img src={Grey3} alt=""/>
@@ -107,15 +113,32 @@ class SignUp extends Component {
                     <hr/>
                 </div>
                 <div className='signupinput'>
-                    <input type="text" placeholder='First Name' value={this.props.reducer.user.first_name}/>
-                    <input type="text" placeholder='Last Name'/>
-                    <input type="text" placeholder='Email'/>
-                    <input type="text" placeholder='Phone'/>
-                    <input type="text" placeholder='Username'/>
-                    <button onClick={this.setBoxNum2}>Next</button>
+                    <h2 id="selectplantitle">Select a Plan</h2>
+                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Unlimited Membership','$175')}>
+                        <div className='insidemembershipbutton'>
+                            <p id='monthlycost'>$175</p>
+                            <p id='smallmonth'>Month</p>
+                        </div>
+                        Unlimited Access
+                    </button>
+                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Vip Membership','$150')}>
+                        <div className='insidemembershipbutton'>
+                            <p id='monthlycost'>$150</p>
+                            <p id='smallmonth'>Month</p>
+                        </div>
+                        VIP Access
+                    </button>
+                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Standard Membership','$125')}>
+                        <div className='insidemembershipbutton'>
+                            <p id='monthlycost'>$125</p>
+                            <p id='smallmonth'>Month</p>
+                        </div>
+                        Standard Access
+                    </button>
+                    <button onClick={this.setBoxNum2} id='membershipselectnextbutton'>Next</button>
                 </div>
                 <div className='signupfooter'>
-                    <h4>Take Me Back</h4>
+                    <Link to='/'><h4>Nevermind</h4></Link>
                     <hr/>
                     <p><Link to='/'>Home</Link> | <Link to='/'>Contact</Link></p>
                 </div>
@@ -126,11 +149,11 @@ class SignUp extends Component {
                 <div className='steps'>
                     <div className='stepsflex'>
                         <img src={GreenCheck} alt=""/>
-                        <p>Member Details</p>
+                        <p>Membership</p>
                     </div>
                     <div className='stepsflex'>
                         <img src={Green2} alt=""/>
-                        <p>Membership</p>
+                        <p>Payment</p>
                     </div>
                     <div className='stepsflex'>
                         <img src={Grey3} alt=""/>
@@ -139,32 +162,16 @@ class SignUp extends Component {
                     <hr/>
                 </div>
                 <div className='signupinput'>
-                    <h2 id="selectplantitle">Select a Plan</h2>
-                    <button id='membershipbutton'>
-                        <div className='insidemembershipbutton'>
-                            <p id='monthlycost'>$175</p>
-                            <p id='smallmonth'>Month</p>
-                        </div>
-                        Unlimited Access
-                    </button>
-                    <button id='membershipbutton'>
-                        <div className='insidemembershipbutton'>
-                            <p id='monthlycost'>$150</p>
-                            <p id='smallmonth'>Month</p>
-                        </div>
-                        VIP Access
-                    </button>
-                    <button id='membershipbutton'>
-                        <div className='insidemembershipbutton'>
-                            <p id='monthlycost'>$125</p>
-                            <p id='smallmonth'>Month</p>
-                        </div>
-                        Standard Access
-                    </button>
-                    <button onClick={this.setBoxNum3} id='membershipselectnextbutton'>Next</button>
+                    <h2>{this.state.membership_level}</h2>
+                    <h3>{this.state.cost}</h3>
+                    <input type="text" placeholder='Email'/>
+                    <input type="text" placeholder='Card Number'/>
+                    <input type="text" placeholder='MM/YY'/>
+                    <input type="text" placeholder='CVC'/>
+                    <button id='paybutton' onClick={this.setBoxNum3}>Pay $175.00</button>
                 </div>
                 <div className='signupfooter'>
-                    <h4 onClick={this.setBoxNum1}>Take Me Back</h4>
+                    <h4 onClick={this.setBoxNum1}>Back</h4>
                     <hr/>
                     <p><Link to='/'>Home</Link> | <Link to='/'>Contact</Link></p>
                 </div>
@@ -175,29 +182,26 @@ class SignUp extends Component {
                 <div className='steps'>
                     <div className='stepsflex'>
                         <img src={GreenCheck} alt=""/>
-                        <p>Member Details</p>
-                    </div>
-                    <div className='stepsflex'>
-                        <img src={GreenCheck} alt=""/>
                         <p>Membership</p>
                     </div>
                     <div className='stepsflex'>
-                        <img src={Green3} alt=""/>
+                        <img src={GreenCheck} alt=""/>
+                        <p>Payment</p>
+                    </div>
+                    <div className='stepsflex'>
+                        <img src={GreenCheck} alt=""/>
                         <p>Confirmation</p>
                     </div>
                     <hr/>
                 </div>
                 <div className='signupinput'>
-                    <h2>Unlimited Membership</h2>
-                    <h3>$175 /mo.</h3>
-                    <input type="text" placeholder='Email'/>
-                    <input type="text" placeholder='Card Number'/>
-                    <input type="text" placeholder='MM/YY'/>
-                    <input type="text" placeholder='CVC'/>
-                    <button id='paybutton'>Pay $175.00</button>
+                    <h2>Welcome.</h2>
+                    <h3 id='paymentSuccessful'>Your Payment Was Successful</h3>
+                    <img src={Confirmation} alt="" className='confirmation'/>
+                    <Link to={`/member/${this.props.reducer.user.member_id}`}><button id='gotoprofilebutton'>Go to your Profile</button></Link>
                 </div>
                 <div className='signupfooter'>
-                    <h4 onClick={this.setBoxNum2}>Take Me Back</h4>
+                    <Link to={`/member/${this.props.reducer.user.member_id}`}><h4>Visit Your Profile</h4></Link>
                     <hr/>
                     <p><Link to='/'>Home</Link> | <Link to='/'>Contact</Link></p>
                 </div>

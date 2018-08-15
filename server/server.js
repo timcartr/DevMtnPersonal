@@ -7,10 +7,7 @@ const bodyParser = require('body-parser')
 const ctrl = require('./controller')
 const AWS = require('aws-sdk')
 const app = express()
-
-app.use(bodyParser.json({ limit: '50mb' }))
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
-
+const S3 = new AWS.S3()
 const { 
     SERVER_PORT, 
     REACT_APP_DOMAIN, 
@@ -20,13 +17,14 @@ const {
     CONNECTION_STRING
 } = process.env
 
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     region: process.env.AWS_REGION,
 })
-
-const S3 = new AWS.S3()
 
 app.use(session({
     secret: SESSION_SECRET,
@@ -40,6 +38,7 @@ app.get('/api/members', ctrl.getAllMembers)
 app.put('/api/updateMember/:id', ctrl.updateMember)
 app.put('/api/updateMembership/:id', ctrl.updateMembership)
 app.put('/api/updateMemberAdmin/:id', ctrl.updateMemberAdmin)
+app.put('/api/updateMemberPhone/:id', ctrl.updateMemberPhone)
 app.put('/api/adminUpdateMembershipLevel/:id', ctrl.adminUpdateMembership)
 app.delete('/api/deleteMember/:id', ctrl.deleteMember)
 app.put('/api/updatePic/:id', ctrl.updatePic)
@@ -59,11 +58,14 @@ app.get('/auth/callback', async (req,res) => {
     
     const db = req.app.get('db')
     let { sub, email, name, picture } = resWithUserData.data
+    let nameSplit = name.split(" ")
+    let firstName = nameSplit[0]
+    let lastName = nameSplit[1]
 
     let foundUser = await db.find_user([sub])
     // console.log(foundUser[0])
     if(!foundUser[0]){
-    let createdUser = await db.create_member([name,sub,email,picture])
+    let createdUser = await db.create_member([firstName, lastName,sub,email,picture])
     let updateMemeberships = await db.create_membership([createdUser[0].member_id])
     req.session.user = createdUser[0]
     res.redirect(`/#/signup`)
@@ -101,7 +103,6 @@ app.post('/api/s3', (req, res) => {
         res.status(code).send(response);
     });
 });
-
 
 
 massive(CONNECTION_STRING).then( connection => {

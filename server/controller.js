@@ -16,10 +16,19 @@ module.exports={
     updateMember: async (req, res) => {
         const db = req.app.get('db')
         const { id } = req.params
-        const { first_name, last_name, email, phone } = req.body
-        
-        let updatedMember = await db.update_member([first_name, last_name, email, phone, id])
-        console.log('updatedMember', updatedMember[0].member_id)
+        const { first_name, last_name, email, phone, username } = req.body
+        console.log('body',req.body)
+        let updatedMember = await db.update_member([first_name, last_name, email, phone, username, id])
+        let foundUser = await db.find_user([updatedMember[0].auth_id])
+        console.log('foundUser',foundUser)
+        // foundUser[0] ? res.send(foundUser) : res.sendStatus(401)
+        res.send(foundUser)
+    },
+    updateMemberPhone: async (req, res) => {
+        const db = req.app.get('db')
+        const { id } = req.params
+        const { phone } = req.body
+        let updatedMember = await db.update_member_phone([ phone, id])
         let foundUser = await db.find_user([updatedMember[0].auth_id])
         console.log('foundUser',foundUser)
         // foundUser[0] ? res.send(foundUser) : res.sendStatus(401)

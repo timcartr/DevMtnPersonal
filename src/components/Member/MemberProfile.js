@@ -7,7 +7,7 @@ import cameraIcon from '../../img/camera.svg'
 
 import { updateUserData } from '../../ducks/reducer'
 import { showModal } from '../Modals/actions/modal';
-import { MODAL_TYPE_EDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIP, MODAL_TYPE_EDITPROFILEPIC } from '../Modals/constants/ModalTypes';
+import { MODAL_TYPE_EDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIP, MODAL_TYPE_EDITPROFILEPIC, MODAL_TYPE_ADDPHONE } from '../Modals/constants/ModalTypes';
 
 class Member_Profile extends Component {
     state = {
@@ -18,7 +18,14 @@ class Member_Profile extends Component {
         axios.get('/api/user-data').then(res => {
             // invoke action creator to update redux state
             this.props.updateUserData(res.data)
+            let allGood = () => 'all good'
+            !res.data.phone ? this.showUpdatePhone() : allGood()
             })
+    }
+
+    showUpdatePhone = () => {
+        this.props.showModal(MODAL_TYPE_ADDPHONE, {
+        })
     }
 
     showUpdateProfile = () => {
