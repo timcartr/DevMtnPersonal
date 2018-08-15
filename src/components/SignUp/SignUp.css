@@ -1,5 +1,197 @@
-.signUp {
+.signUpBG {
+    position: fixed;
     display: flex;
     flex-direction: column;
-    width:50%;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 100vh;
+    z-index: 1000;
+    background: linear-gradient(to bottom right, #f2f2f2, #b3b3b3);
+}
+
+.signup {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:450px;
+    background: white;
+    transform: translateX(0);
+    transition: transform 1s ease;
+    border-radius: 10px;
+    box-shadow: 0px 0px 47px #00000012;
+}
+
+.signup.off {
+    transform: translateX(230%);
+}
+
+.steps {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px 20px;
+}
+
+.stepsflex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.steps img {
+    width: 40px;
+    z-index: 3000;
+    margin-bottom:2px;
+}
+
+.steps p{
+    font-family: 'Overpass', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #808080;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.steps hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    position: absolute;
+    width: 90%;
+    border-top: 1px solid #e6e6e6;
+    z-index: -1000;
+    margin-top:18px;
+}
+
+.signupinput {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom right, #8df8b7, #37a7f2);
+    width: 100%;
+    padding: 20px 50px;
+    text-align: center;
+}
+
+.signupinput h2 {
+    font-family: 'Chivo', Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+.signupinput h3 {
+    font-family: 'Chivo', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.signupinput input {
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 200;
+    color: white;
+    padding: 12px;
+}
+
+
+.signupinput input::placeholder {
+    color: white;
+}
+
+.signupinput button {
+    font-family: "Chivo", Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 40px;
+    width: 152px;
+    border-radius: 4px;
+    border: 1px solid white;
+    margin: 6px auto;
+}
+
+.insidemembershipbutton{
+    margin: 0 18px;
+    margin-right: 30px;
+}
+
+#membershipbutton {
+    width: 100%;
+    font-size:22px;
+    padding: 8px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#monthlycost {
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+}
+
+#smallmonth {
+    font-weight: 500;
+    font-size: 10px;
+    color: white; 
+    margin-top:-5px;
+}
+
+#paybutton {
+    width: 80%;
+    margin: 30px auto;
+}
+
+#membershipselectnextbutton {
+    margin-top: 30px;
+}
+
+#selectplantitle {
+    margin-bottom: 20px;
+}
+
+.signupfooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 25px;
+    width: 70%;
+}
+
+.signupfooter h4 {
+    font-family: "Chivo", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #808080;
+}
+
+.signupfooter hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    width: 100%;
+    border-top: 1px solid #e6e6e6;
+    margin: 14px 0;
+}
+
+.signupfooter a {
+    font-size: 14px;
+    color: #999999;
+    text-decoration: none;
 }

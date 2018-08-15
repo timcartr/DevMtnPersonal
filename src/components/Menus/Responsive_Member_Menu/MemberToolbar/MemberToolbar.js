@@ -31,10 +31,8 @@ class MemberToolbar extends Component {
     render() {
         const user = this.props.reducer.user
         const isHidden = this.state.memberProfileDropdownHidden
-        let toolbarDropdownClass = 'dropdown'
-        isHidden ? toolbarDropdownClass : toolbarDropdownClass = 'dropdown show'
-        let toolbarArrowClass = 'toolbarArrow'
-        isHidden ? toolbarArrowClass : toolbarArrowClass = 'toolbarArrow selected'
+        let toolbarDropdownClass = isHidden ? 'dropdown' : 'dropdown show'
+        let toolbarArrowClass = isHidden ? 'toolbarArrow' : 'toolbarArrow selected'
         return(
             <header className='memberToolbar'>
                 <nav className="toolbar_navigation">

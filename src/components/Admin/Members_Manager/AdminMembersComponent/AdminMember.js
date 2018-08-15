@@ -48,8 +48,7 @@ class AdminMember extends Component {
     render() {
         const member = this.props.member
         const isHidden = this.state.memberInfoHidden      
-        let MoreMemberInfoClass = 'moreMemberInfo Hide'
-        isHidden ? MoreMemberInfoClass : MoreMemberInfoClass = 'moreMemberInfo Display'
+        let MoreMemberInfoClass = isHidden ? 'moreMemberInfo Hide' : 'moreMemberInfo Display'
         let startDate = new Date(member.start_date);
         let endDate = new Date(member.end_date);
         return (

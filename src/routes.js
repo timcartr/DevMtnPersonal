@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import MemberProfile from './components/Member/MemberProfile';
 import AdminDashboard from './components/Admin/Admin_Dashboard/Admin_Dashboard';
 import MembersManager from './components/Admin/Members_Manager/Members_Manager';
+import SignUp from './components/SignUp/SignUp';
 
 class Router extends Component {
 
@@ -27,6 +28,7 @@ class Router extends Component {
                 <Route path={`/member/:id`} component={MemberProfile} />
                 <Route exact path='/admin' component={AdminDashboard} />
                 <Route path={`/admin/members`} component={MembersManager} />
+                <Route path={`/signup`} component={SignUp} />
                 {/* <Route path={`/checkout`} component={CheckoutForm} /> */}
             </Switch> 
         )

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 
 import { hideModal } from '../../actions/modal';
-import { updateMembersData } from '../../../../ducks/reducer';
 import Modal from '../../components/Modal';
 import './Modals.css'
 

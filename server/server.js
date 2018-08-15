@@ -43,6 +43,8 @@ app.put('/api/updateMemberAdmin/:id', ctrl.updateMemberAdmin)
 app.put('/api/adminUpdateMembershipLevel/:id', ctrl.adminUpdateMembership)
 app.delete('/api/deleteMember/:id', ctrl.deleteMember)
 app.put('/api/updatePic/:id', ctrl.updatePic)
+
+//Auth0 Login
 app.get('/auth/callback', async (req,res) => {
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
@@ -64,7 +66,7 @@ app.get('/auth/callback', async (req,res) => {
     let createdUser = await db.create_member([name,sub,email,picture])
     let updateMemeberships = await db.create_membership([createdUser[0].member_id])
     req.session.user = createdUser[0]
-    res.redirect(`/#/member/${req.session.user.member_id}`)
+    res.redirect(`/#/signup`)
     } else if(foundUser[0].membership_level !== 'Admin'){
     req.session.user = foundUser[0];
     res.redirect(`/#/member/${req.session.user.member_id}`)
@@ -73,6 +75,8 @@ app.get('/auth/callback', async (req,res) => {
         res.redirect(`/#/admin/members`)
         }
 })
+
+// Amazon S3 Uploader
 app.post('/api/s3', (req, res) => {
     const photo = req.body;
     const buf = new Buffer(photo.file.replace(/^data:image\/\w+;base64,/, ''), 'base64');
