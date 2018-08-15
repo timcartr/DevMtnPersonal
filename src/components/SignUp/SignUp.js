@@ -11,6 +11,7 @@ import Grey3 from '../../img/SVG/Asset10.svg'
 import Green2 from '../../img/SVG/Asset11.svg'
 import GreenCheck from '../../img/SVG/Asset13.svg'
 import Confirmation from '../../img/SVG/Asset14.svg'
+import SignUpPayment from './SignUpPayment';
 
 class SignUp extends Component {
     state = {
@@ -146,35 +147,12 @@ class SignUp extends Component {
 
             {/* Box 2 */}
             <div className={this.state.box === 2 ? 'signup' : 'signup off'}>
-                <div className='steps'>
-                    <div className='stepsflex'>
-                        <img src={GreenCheck} alt=""/>
-                        <p>Membership</p>
-                    </div>
-                    <div className='stepsflex'>
-                        <img src={Green2} alt=""/>
-                        <p>Payment</p>
-                    </div>
-                    <div className='stepsflex'>
-                        <img src={Grey3} alt=""/>
-                        <p>Confirmation</p>
-                    </div>
-                    <hr/>
-                </div>
-                <div className='signupinput'>
-                    <h2>{this.state.membership_level}</h2>
-                    <h3>{this.state.cost}</h3>
-                    <input type="text" placeholder='Email'/>
-                    <input type="text" placeholder='Card Number'/>
-                    <input type="text" placeholder='MM/YY'/>
-                    <input type="text" placeholder='CVC'/>
-                    <button id='paybutton' onClick={this.setBoxNum3}>Pay $175.00</button>
-                </div>
-                <div className='signupfooter'>
-                    <h4 onClick={this.setBoxNum1}>Back</h4>
-                    <hr/>
-                    <p><Link to='/'>Home</Link> | <Link to='/'>Contact</Link></p>
-                </div>
+                <SignUpPayment 
+                    membershiplevel = {this.state.membership_level}
+                    cost = {this.state.cost}
+                    setBoxNum1 = {this.setBoxNum1}
+                    setBoxNum3 = {this.setBoxNum3}
+                />
             </div>
 
             {/* Box 3 */}
