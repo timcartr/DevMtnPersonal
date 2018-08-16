@@ -18,8 +18,6 @@ const Login = ({ title, afterClose, hideModal }) => {
 
   return (
     <Modal onClose={onClose}>
-      <h1>Hello</h1>
-      {window.open= ('http://localhost3000')}
     </Modal>
   );
 };
