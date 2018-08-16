@@ -47,12 +47,13 @@ app.put('/api/updatePic/:id', ctrl.updatePic)
 
 //Auth0 Login
 app.get('/auth/callback', async (req,res) => {
+    
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
         client_secret: CLIENT_SECRET,
         code: req.query.code,
         grant_type: 'authorization_code',
-        redirect_uri: `http://${req.headers.host}`
+        redirect_uri: `${process.env.PROTOCOL}://${req.headers.host}`
     }
 
     let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
