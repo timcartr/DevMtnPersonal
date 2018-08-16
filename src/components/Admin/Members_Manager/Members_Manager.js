@@ -4,7 +4,8 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import { updateUserData, updateMembersData } from '../../../ducks/reducer'
 import AdminMember from './AdminMembersComponent/AdminMember';
-import AdminDashboardMenu from '../AdminDashboardMenu'
+import AdminDashboardMenu from '../AdminDashboardMenu';
+import {withRouter} from 'react-router-dom'
 
 class Members_Manager extends Component {
     componentDidMount() {
@@ -42,4 +43,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {updateUserData, updateMembersData})(Members_Manager)
+export default withRouter(connect(mapStateToProps, {updateUserData, updateMembersData})(Members_Manager))

@@ -8,7 +8,6 @@ import {updateUserData} from '../../ducks/reducer'
 import Green1 from '../../img/SVG/Asset8.svg'
 import Grey2 from '../../img/SVG/Asset9.svg'
 import Grey3 from '../../img/SVG/Asset10.svg'
-import Green2 from '../../img/SVG/Asset11.svg'
 import GreenCheck from '../../img/SVG/Asset13.svg'
 import Confirmation from '../../img/SVG/Asset14.svg'
 import SignUpPayment from './SignUpPayment';

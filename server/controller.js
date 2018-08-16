@@ -85,5 +85,9 @@ module.exports={
         console.log(req.body)
         let updatedProfilePic = await db.update_profile_pic([profile_pic, id])
         res.send(updatedProfilePic)
+    },
+    logout: (req, res) => {
+        req.session.destroy()
+        res.status(200).send("Gone")
     }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import './MemberProfile.css'
 import cameraIcon from '../../img/camera.svg'
@@ -113,4 +114,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { showModal,updateUserData })(Member_Profile)
+export default withRouter(connect(mapStateToProps, { showModal,updateUserData })(Member_Profile))

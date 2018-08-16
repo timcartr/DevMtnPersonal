@@ -1,16 +1,18 @@
 import React, {Component} from 'react'
 import './MemberToolbar.css'
 import DrawerToggleButton from '../../DrawerToggleButton';
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { showModal } from '../../../Modals/actions/modal';
 import { MODAL_TYPE_EDITPROFILE } from '../../../Modals/constants/ModalTypes';
+import axios from 'axios'
 
 class MemberToolbar extends Component {
     state = {
-        memberProfileDropdownHidden: true
+        memberProfileDropdownHidden: true,
+        redirect: false
     }
 
     hiddenInfoToggleClickHandler = () => {
@@ -27,14 +29,25 @@ class MemberToolbar extends Component {
             memberProfileDropdownHidden: true
         })
     };
+
+    logout = () => {
+        axios.post('/api/logout').then(res => {
+            console.log(res)
+            this.setState({
+                redirect:true
+            })
+        })
+    }
     
     render() {
         const user = this.props.reducer.user
         const isHidden = this.state.memberProfileDropdownHidden
         let toolbarDropdownClass = isHidden ? 'dropdown' : 'dropdown show'
         let toolbarArrowClass = isHidden ? 'toolbarArrow' : 'toolbarArrow selected'
+        console.log(this.state.redirect)
         return(
             <header className='memberToolbar'>
+            {this.state.redirect? <Redirect to='/'/> : ''}
                 <nav className="toolbar_navigation">
                     <div className="toolbar_logo"><a href="">LOGO</a></div>
                     <div className="spacer" />
@@ -59,7 +72,7 @@ class MemberToolbar extends Component {
                         <hr/>
                         <li onClick={this.showUpdateProfile}>Edit Profile</li>
                         <hr/>
-                        <li>Sign Out</li>
+                        <li onClick={this.logout}>Sign Out</li>
                     </ul>
                 </div>
             </header>

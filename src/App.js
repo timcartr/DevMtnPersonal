@@ -7,6 +7,7 @@ import './App.css';
 import Routes from './routes'
 import MenusSwitcher from './components/Menus/MenusSwitcher';
 import Footer from './components/Footer/Footer';
+import {HashRouter, Switch} from 'react-router-dom'
 
 // Modals
 import ModalRoot from './components/Modals/containers/ModalRoot'
@@ -24,12 +25,16 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App" style={{height:'100%'}}>
-          <MenusSwitcher login={this.login}/>
-          <Routes/>
-          <ModalRoot />
-          <Footer/>
-      </div>
+      <HashRouter>
+        <Switch>
+          <div className="App" style={{height:'100%'}}>
+              <MenusSwitcher login={this.login}/>
+              <Routes/>
+              <ModalRoot />
+              <Footer/>
+          </div>
+        </Switch>
+      </HashRouter>
     );
   }
 }

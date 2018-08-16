@@ -5,10 +5,12 @@ export default class Welcome extends Component {
   login() {
     let { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID } = process.env
 
-    let url = `${window.location.origin}/auth/callback`
+    let url = `${encodeURI(window.location.origin)}/auth/callback`
+    console.log(window.location.origin)
 
-    window.location = 
-    `https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_url=${url}&response_type=code`
+
+
+    window.location = `https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_url=${url}&response_type=code`
   }
   render() {
     return (

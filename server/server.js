@@ -36,6 +36,7 @@ app.use(session({
 // Endpoints
 app.get('/api/user-data', ctrl.getUser)
 app.get('/api/members', ctrl.getAllMembers)
+app.post('/api/logout', ctrl.logout)
 app.put('/api/updateMember/:id', ctrl.updateMember)
 app.put('/api/updateMembership/:id', ctrl.updateMembership)
 app.put('/api/updateMemberAdmin/:id', ctrl.updateMemberAdmin)
