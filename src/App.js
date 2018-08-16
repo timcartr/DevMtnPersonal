@@ -4,10 +4,10 @@ import React, { Component } from 'react'
 import './App.css';
 
 // Route Components
-import Routes from './routes'
+import routes from './routes'
 import MenusSwitcher from './components/Menus/MenusSwitcher';
 import Footer from './components/Footer/Footer';
-import {HashRouter, Switch} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 
 // Modals
 import ModalRoot from './components/Modals/containers/ModalRoot'
@@ -26,14 +26,12 @@ class App extends Component {
   render() {
     return (
       <HashRouter>
-        <Switch>
           <div className="App" style={{height:'100%'}}>
               <MenusSwitcher login={this.login}/>
-              <Routes/>
+              {routes}
               <ModalRoot />
               <Footer/>
           </div>
-        </Switch>
       </HashRouter>
     );
   }
