@@ -10,9 +10,12 @@ import { MODAL_TYPE_EDITPROFILE } from '../../../Modals/constants/ModalTypes';
 import axios from 'axios'
 
 class MemberToolbar extends Component {
-    state = {
-        memberProfileDropdownHidden: true,
-        redirect: false
+    constructor(){
+        super()
+        this.state = {
+            memberProfileDropdownHidden: true,
+            redirect: false
+        }
     }
 
     hiddenInfoToggleClickHandler = () => {

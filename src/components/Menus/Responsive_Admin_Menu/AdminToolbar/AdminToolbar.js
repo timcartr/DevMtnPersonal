@@ -7,6 +7,7 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { showModal } from '../../../Modals/actions/modal';
 import { MODAL_TYPE_EDITPROFILE } from '../../../Modals/constants/ModalTypes';
+import axios from 'axios'
 
 class AdminToolbar extends Component {
     state = {
@@ -31,6 +32,15 @@ class AdminToolbar extends Component {
     closeDropdown = () => {
         this.setState({
             memberProfileDropdownHidden: true
+        })
+    }
+
+    logout = () => {
+        axios.post('/api/logout').then(res => {
+            console.log(res)
+            this.setState({
+                redirect:true
+            })
         })
     }
     
@@ -66,7 +76,7 @@ class AdminToolbar extends Component {
                         <hr/>
                         <li onClick={this.showUpdateProfile}>Edit Profile</li>
                         <hr/>
-                        <li onClick={this.showUpdateProfile}>Sign Out</li>
+                        <li onClick={this.logout}>Sign Out</li>
                     </ul>
                 </div>
             </header>
