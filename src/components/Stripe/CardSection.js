@@ -10,9 +10,6 @@ class CardSection extends React.Component {
         color: '#fff',
         '::placeholder': {
             color: '#fff'
-        },
-        invalid: {
-            color: '#9e2146',
         }
     }
     render() {

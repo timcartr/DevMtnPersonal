@@ -14,16 +14,29 @@ import SignUpPayment from './SignUpPayment';
 
 class SignUp extends Component {
     state = {
-        box: 2,
+        box: 1,
+        member_id:this.props.reducer.user.member_id,
         membership_level:'Unlimited Access',
-        cost:175
+        cost:'175'
     }
 
     componentDidMount() {
         axios.get('/api/user-data').then(res => {
             // invoke action creator to update redux state
             this.props.updateUserData(res.data)
+            this.setState({
+                member_id: res.data.member_id
             })
+            })
+    }
+
+    updateMembershipData(){
+        axios.put(`/api/updateMembership/${this.props.reducer.user.member_id}`, {
+            membership_level: this.state.membership_level,
+            cost: this.state.cost
+        }).then(res=> {
+        this.props.updateUserData(res.data[0])
+        })
     }
 
     setBoxNum1 = () => {
@@ -52,7 +65,7 @@ class SignUp extends Component {
     }
 
     render() {
-        console.log(this.state.cost)
+        console.log(this.state.member_id)
         return (
         <div className='signUpBG'>
             {/* Box 1 */}
@@ -74,21 +87,21 @@ class SignUp extends Component {
                 </div>
                 <div className='signupinput'>
                     <h2 id="selectplantitle">Select a Plan</h2>
-                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Unlimited Membership','$175')}>
+                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Unlimited Membership','175')}>
                         <div className='insidemembershipbutton'>
                             <p id='monthlycost'>$175</p>
                             <p id='smallmonth'>Month</p>
                         </div>
                         Unlimited Access
                     </button>
-                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Vip Access','$150')}>
+                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Vip Access','150')}>
                         <div className='insidemembershipbutton'>
                             <p id='monthlycost'>$150</p>
                             <p id='smallmonth'>Month</p>
                         </div>
                         VIP Access
                     </button>
-                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Standard Access','$125')}>
+                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Standard Access','125')}>
                         <div className='insidemembershipbutton'>
                             <p id='monthlycost'>$125</p>
                             <p id='smallmonth'>Month</p>
@@ -136,10 +149,10 @@ class SignUp extends Component {
                     <h2>Welcome.</h2>
                     <h3 id='paymentSuccessful'>Your Payment Was Successful</h3>
                     <img src={Confirmation} alt="" className='confirmation'/>
-                    <Link to={`/member/${this.props.reducer.user.member_id}`}><button id='gotoprofilebutton'>Go to your Profile</button></Link>
+                    <Link to={`/member/${this.props.reducer.user.member_id}`}><button id='gotoprofilebutton' onClick={() => this.updateMembershipData()}>Go to your Profile</button></Link>
                 </div>
                 <div className='signupfooter'>
-                    <Link to={`/member/${this.props.reducer.user.member_id}`}><h4>Visit Your Profile</h4></Link>
+                    <Link to={`/member/${this.props.reducer.user.member_id}`}><h4 onClick={() => this.updateMembershipData()}>Visit Your Profile</h4></Link>
                     <hr/>
                     <p><Link to='/'>Home</Link> | <Link to='/'>Contact</Link></p>
                 </div>

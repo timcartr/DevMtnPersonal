@@ -7,6 +7,8 @@ const bodyParser = require('body-parser')
 const ctrl = require('./controller')
 const AWS = require('aws-sdk')
 const app = express()
+const cors = require('cors')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const S3 = new AWS.S3()
 const { 
     SERVER_PORT, 
@@ -20,6 +22,7 @@ const {
 app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+app.use(cors())
 
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -105,6 +108,26 @@ app.post('/api/s3', (req, res) => {
         }
         res.status(code).send(response);
     });
+});
+
+// Stripe
+app.post('/api/payment', function(req, res, next){
+    console.log(req.body)
+    //convert amount to pennies
+    const convertedAmt = req.body.amount * 10
+
+    const charge = stripe.charges.create({
+    amount: convertedAmt, // amount in cents, again
+    currency: 'usd',
+    source: req.body.token.id,
+    description: 'Test charge from react app'
+}, function(err, charge) {
+    if (err) return res.sendStatus(500)
+    return res.sendStatus(200);
+    // if (err && err.type === 'StripeCardError') {
+    //   // The card has been declined
+    // }
+});
 });
 
 

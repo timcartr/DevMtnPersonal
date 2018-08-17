@@ -14,7 +14,6 @@ import InjectedCheckoutForm from '../Stripe/CheckoutForm'
 class SignUp extends Component {
 
     render() {
-        console.log(this.props.cost)
         return (
             <div className='signup'>
                 <div className='steps'>

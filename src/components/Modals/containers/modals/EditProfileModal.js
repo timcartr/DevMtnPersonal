@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux';
 import axios from 'axios'
 
@@ -85,11 +84,6 @@ class EditProfile extends Component {
   );
 }
 };
-
-// Notification.propTypes = {
-//   title: PropTypes.string,
-//   onClose: PropTypes.func
-// };
 
 function mapStateToProps(state) {
   return {
