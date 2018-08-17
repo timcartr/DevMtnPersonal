@@ -1,5 +1,4 @@
 import React from 'react';
-import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux';
 
 import { hideModal } from '../../actions/modal';
@@ -21,11 +20,6 @@ const Notification = ({ title, afterClose, hideModal }) => {
       </button>
     </Modal>
   );
-};
-
-Notification.propTypes = {
-  title: PropTypes.string,
-  onClose: PropTypes.func
 };
 
 export default connect(null, { hideModal })(Notification);

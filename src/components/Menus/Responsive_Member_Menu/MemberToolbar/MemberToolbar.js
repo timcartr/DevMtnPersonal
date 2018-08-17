@@ -47,7 +47,6 @@ class MemberToolbar extends Component {
         const isHidden = this.state.memberProfileDropdownHidden
         let toolbarDropdownClass = isHidden ? 'dropdown' : 'dropdown show'
         let toolbarArrowClass = isHidden ? 'toolbarArrow' : 'toolbarArrow selected'
-        console.log(this.state.redirect)
         return(
             <header className='memberToolbar'>
             {this.state.redirect? <Redirect to='/'/> : ''}
