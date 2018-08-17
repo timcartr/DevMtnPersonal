@@ -43,6 +43,10 @@
     align-items: center;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 .steps img {
     width: 40px;
     z-index: 3000;
@@ -81,7 +85,8 @@
 .signupinput h2 {
     font-family: 'Chivo', Arial, Helvetica, sans-serif;
     font-size: 28px;
-    font-weight: 500;
+    letter-spacing: 1px;
+    font-weight: 400;
     color: white;
     text-transform: uppercase;
     margin: 10px 0;
@@ -221,3 +226,25 @@
     margin: 0 auto;
 }
 
+.stripeInput {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.stripeElement {
+    border-bottom: 1px solid white;
+    padding: 12px;
+    margin: 20px 0;
+}
+
+.stripeElementHalf {
+    width: 45%;
+    border-bottom: 1px solid white;
+    padding: 12px;
+    margin: 20px 0;
+}
+
+.stripeFlex {
+    display: flex;
+    justify-content: space-between;
+}

@@ -3,33 +3,30 @@ import './SignUp.css'
 import {Link} from 'react-router-dom'
 // import axios from 'axios'
 import {connect} from 'react-redux'
+import {Elements} from 'react-stripe-elements'
 
 import {updateUserData} from '../../ducks/reducer'
 import Grey3 from '../../img/SVG/Asset10.svg'
 import Green2 from '../../img/SVG/Asset11.svg'
 import GreenCheck from '../../img/SVG/Asset13.svg'
+import InjectedCheckoutForm from '../Stripe/CheckoutForm'
 
 class SignUp extends Component {
-    state = {
-        box: 1,
-        membership_level:'',
-        cost:''
-    }
 
     render() {
-        console.log(this.props.reducer.user)
+        console.log(this.props.cost)
         return (
             <div className='signup'>
                 <div className='steps'>
-                    <div className='stepsflex'>
+                    <div className='stepsflex clickable' onClick={this.props.setBoxNum1}>
                         <img src={GreenCheck} alt=""/>
                         <p>Membership</p>
                     </div>
-                    <div className='stepsflex'>
+                    <div className='stepsflex' >
                         <img src={Green2} alt=""/>
                         <p>Payment</p>
                     </div>
-                    <div className='stepsflex'>
+                    <div className='stepsflex' >
                         <img src={Grey3} alt=""/>
                         <p>Confirmation</p>
                     </div>
@@ -37,12 +34,12 @@ class SignUp extends Component {
                 </div>
                 <div className='signupinput'>
                     <h2>{this.props.membershiplevel}</h2>
-                    <h3>{this.props.cost}</h3>
-                    <input type="text" placeholder='Email'/>
-                    <input type="text" placeholder='Card Number'/>
-                    <input type="text" placeholder='MM/YY'/>
-                    <input type="text" placeholder='CVC'/>
-                    <button id='paybutton' onClick={this.props.setBoxNum3}>Pay {this.props.cost}</button>
+                    <h3>${this.props.cost} /mo.</h3>
+                    <Elements>
+                        <InjectedCheckoutForm 
+                            setBoxNum3 = {this.props.setBoxNum3} 
+                            cost = {this.props.cost}/>
+                    </Elements>
                 </div>
                 <div className='signupfooter'>
                     <h4 onClick={this.props.setBoxNum1}>Back</h4>

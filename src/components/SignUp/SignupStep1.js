@@ -109,7 +109,6 @@ class SignupStep1 extends Component {
                     <p><Link to='/'>Home</Link> | <Link to='/'>Contact</Link></p>
                 </div>
             </div>
-        </div>
         )
     }
 }

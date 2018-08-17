@@ -14,9 +14,9 @@ import SignUpPayment from './SignUpPayment';
 
 class SignUp extends Component {
     state = {
-        box: 1,
-        membership_level:'',
-        cost:''
+        box: 2,
+        membership_level:'Unlimited Access',
+        cost:175
     }
 
     componentDidMount() {
@@ -36,43 +36,12 @@ class SignUp extends Component {
         this.setState({
             box:2
         })
-        this.updateMembershipData()
     }
 
     setBoxNum3 = () => {
         this.setState({
             box:3
         })
-    }
-
-    handleFirstName(val){
-        this.setState({
-            first_name: val
-        }) 
-    }
-
-    handleLastName(val){
-        this.setState({
-            last_name: val
-        }) 
-    }
-
-    handleEmail(val){
-        this.setState({
-            email: val
-        }) 
-    }
-
-    handlePhone(val){
-        this.setState({
-            phone: val
-        }) 
-    }
-
-    handleUsername(val){
-        this.setState({
-            username: val
-        }) 
     }
 
     handleMembershipLevel(membership, cost){
@@ -82,17 +51,8 @@ class SignUp extends Component {
         }) 
     }
 
-    updateMembershipData(){
-        axios.put(`/api/updateMembership/${this.props.reducer.user.member_id}`, {
-            membership_level: this.state.membership_level,
-            cost: this.state.cost
-        }).then(res=> {
-        this.props.updateUserData(res.data[0])
-        })
-    }
-
     render() {
-        console.log(this.props.reducer.user)
+        console.log(this.state.cost)
         return (
         <div className='signUpBG'>
             {/* Box 1 */}
@@ -121,14 +81,14 @@ class SignUp extends Component {
                         </div>
                         Unlimited Access
                     </button>
-                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Vip Membership','$150')}>
+                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Vip Access','$150')}>
                         <div className='insidemembershipbutton'>
                             <p id='monthlycost'>$150</p>
                             <p id='smallmonth'>Month</p>
                         </div>
                         VIP Access
                     </button>
-                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Standard Membership','$125')}>
+                    <button id='membershipbutton' onClick={() => this.handleMembershipLevel('Standard Access','$125')}>
                         <div className='insidemembershipbutton'>
                             <p id='monthlycost'>$125</p>
                             <p id='smallmonth'>Month</p>
@@ -150,6 +110,7 @@ class SignUp extends Component {
                     membershiplevel = {this.state.membership_level}
                     cost = {this.state.cost}
                     setBoxNum1 = {this.setBoxNum1}
+                    setBoxNum2 = {this.setBoxNum2}
                     setBoxNum3 = {this.setBoxNum3}
                 />
             </div>
