@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Tools.css'
 import Background from '../../../../img/welcome_bg.jpg'
+// import ToolsCarousel from './ToolsCarousel'
 
 export default class Tools extends Component {
     render() {
@@ -15,6 +16,7 @@ export default class Tools extends Component {
                 </div>
             </div>
         </div>
+        // <ToolsCarousel/>
         )
     }
 }
