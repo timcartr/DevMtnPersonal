@@ -1,23 +1,21 @@
 CREATE TABLE Members (
     Member_Id serial primary key,
-    Username varchar(99),
     Auth_Id text,
     First_Name varchar(99),
     Last_Name varchar(99),
     Email varchar(99),
     Phone varchar(99),
     Profile_Pic text,
+    member_since date,
 );
 
 CREATE TABLE Memberships (
     Membership_Id serial primary key,
-    Type text,
-    Daily_Rate decimal,
-    Length Integer,
+    Membership_Level text,
     Cost Integer,
-    Member_Id Integer,
     Start_Date date,
-    End_Date date
+    End_Date date,
+    Member_Id Integer references members(Member_Id)
 );
 
 CREATE TABLE Certifications (
@@ -25,7 +23,7 @@ CREATE TABLE Certifications (
     Certification text,
     Certification_Length Integer,
     Certification_End date,
-    Member_Id Integer
+    Member_Id Integer refrences members(member_id)
 );
 
 insert into Members (username, first_name, last_name, email, phone, profile_pic, membership_level)

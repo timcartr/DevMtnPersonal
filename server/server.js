@@ -40,13 +40,12 @@ app.use(session({
 app.get('/api/user-data', ctrl.getUser)
 app.get('/api/members', ctrl.getAllMembers)
 app.post('/api/logout', ctrl.logout)
-app.put('/api/updateMember/:id', ctrl.updateMember)
-app.put('/api/updateMembership/:id', ctrl.updateMembership)
-app.put('/api/updateMemberAdmin/:id', ctrl.updateMemberAdmin)
-app.put('/api/updateMemberPhone/:id', ctrl.updateMemberPhone)
-app.put('/api/adminUpdateMembershipLevel/:id', ctrl.adminUpdateMembership)
-app.delete('/api/deleteMember/:id', ctrl.deleteMember)
 app.put('/api/updatePic/:id', ctrl.updatePic)
+app.put('/api/updateMember/:id', ctrl.updateMember)
+app.put('/api/updateMemberSince/:id', ctrl.updateMemberSince)
+app.put('/api/updateMemberPhone/:id', ctrl.updateMemberPhone)
+app.put('/api/updateMembership/:id', ctrl.updateMembership)
+app.delete('/api/deleteMember/:id', ctrl.deleteMember)
 
 //Auth0 Login
 app.get('/auth/callback', async (req,res) => {
@@ -68,7 +67,7 @@ app.get('/auth/callback', async (req,res) => {
     let firstName = nameSplit[0]
     let lastName = nameSplit[1]
 
-    let foundUser = await db.find_user([sub])
+    let foundUser = await db.find_user([email])
     // console.log(foundUser[0])
     if(!foundUser[0]){
     let createdUser = await db.create_member([firstName, lastName,sub,email,picture])
@@ -112,7 +111,6 @@ app.post('/api/s3', (req, res) => {
 
 // Stripe
 app.post('/api/payment', function(req, res, next){
-    console.log(req.body)
     //convert amount to pennies
     const convertedAmt = req.body.amount * 10
 
