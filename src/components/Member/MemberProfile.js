@@ -65,7 +65,7 @@ class Member_Profile extends Component {
 
     render() {
         const member = this.props.reducer.user
-        let startDate = new Date(member.start_date);
+        let memberSince = new Date(member.start_date);
         let endDate = new Date(member.end_date);
         let updateProfilePic = this.state.editPic ? 'showUpdateProfilePic' : 'updateProfilePic'
         return (
@@ -92,7 +92,7 @@ class Member_Profile extends Component {
                 <div className='memberLower'>
 
 
-                    <p><span>Member Since:</span> {startDate.toDateString()}</p>
+                    <p><span>Member Since:</span> {memberSince.toDateString()}</p>
                     <p><span>Membership Expires:</span> {endDate.toDateString()}</p>
                     <p><span>Certifications:</span> Safety, Advanced Safety</p>
                     <p><span>Email:</span> {member.email}</p>

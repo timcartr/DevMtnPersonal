@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 
 import { hideModal } from '../../actions/modal';
+import { createMembersData } from '../../../../ducks/reducer'
 import Modal from '../../components/Modal';
 import './Modals.css'
 
@@ -18,6 +19,10 @@ class DeleteMemberModal extends Component {
 
     delete = () => { 
         axios.delete(`/api/deleteMember/${this.props.member_id}`)
+
+        axios.get('/api/members').then(res=>{
+            this.props.createMembersData(res.data)
+        })
 
         this.props.hideModal();
     }
@@ -42,4 +47,4 @@ class DeleteMemberModal extends Component {
     }
 };
 
-export default connect(null, { hideModal })(DeleteMemberModal);
+export default connect(null, { hideModal, createMembersData })(DeleteMemberModal);

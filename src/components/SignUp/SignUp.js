@@ -16,8 +16,11 @@ class SignUp extends Component {
     state = {
         box: 1,
         member_id:this.props.reducer.user.member_id,
-        membership_level:'Unlimited Access',
-        cost:'175'
+        membershipSelection:'Unlimited Access',
+        cost:'175',
+        start_date: '',
+        end_date: '',
+        member_since: ''
     }
 
     componentDidMount() {
@@ -28,12 +31,28 @@ class SignUp extends Component {
                 member_id: res.data.member_id
             })
             })
+        this.handleDate()
     }
 
+    handleDate = () => {
+        let today = new Date()
+        let start_date = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
+        let thirtyDays = `${today.getFullYear()}-${today.getMonth()+2}-${today.getDate()}`
+    
+        this.setState({
+            start_date: start_date,
+            end_date: thirtyDays,
+            member_since: start_date
+        })
+        }
+
     updateMembershipData(){
-        axios.put(`/api/updateMembership/${this.props.reducer.user.member_id}`, {
-            membership_level: this.state.membership_level,
-            cost: this.state.cost
+        axios.put(`/api/updateMemberSince/${this.props.reducer.user.member_id}`, {
+            membershipSelection: this.state.membershipSelection,
+            cost: this.state.cost,
+            start_date: this.state.start_date,
+            end_date: this.state.end_date,
+            member_since: this.state.member_since
         }).then(res=> {
         this.props.updateUserData(res.data[0])
         })
@@ -65,7 +84,7 @@ class SignUp extends Component {
     }
 
     render() {
-        console.log(this.state.member_id)
+        console.log(this.state)
         return (
         <div className='signUpBG'>
             {/* Box 1 */}

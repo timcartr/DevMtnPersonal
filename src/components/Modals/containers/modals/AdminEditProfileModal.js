@@ -24,10 +24,10 @@ class AdminEditProfile extends Component {
   };
 
   save = () => { 
-    axios.put(`/api/updateMemberAdmin/${this.state.member_id}`, this.state)
+    axios.put(`/api/updateMember/${this.state.member_id}`, this.state)
     .then(res=> {
-      console.log(res.data)
-      // this.props.updateMemberData(res.data[0])
+      console.log('res.data',res.data)
+      this.props.updateMembersData(res.data[0])
     })
 
     this.props.hideModal();
@@ -53,22 +53,12 @@ class AdminEditProfile extends Component {
       email: val
     })
   }
-  handleStartChange = (val) => {
-    this.setState({
-      start_date: val
-    })
-  }
-  handleEndChange = (val) => {
-    this.setState({
-      end_date: val
-    })
-  }
 
 
   render(){
-    let startDate = new Date(this.state.start_date);
-    let endDate = new Date(this.state.end_date);
+    // let startDate = new Date(this.state.start_date);
     const member = this.state
+    console.log('AdminEditProfileModal',this.props.start_date)
     return (
       <Modal onClose={this.onClose}>
       <div className='modalStyle'>
@@ -77,10 +67,8 @@ class AdminEditProfile extends Component {
         <input type="text" value={member.first_name} onChange={e => this.handleFirstNameChange(e.target.value)}/>
         <p>Last Name</p>
         <input type="text" value={member.last_name} onChange={e => this.handleLastNameChange(e.target.value)}/>
-        <p>Member Since</p>
-        <input type="text" value={startDate.toDateString()} onChange={e => this.handleStartChange(e.target.value)}/>
-        <p>Membership Expires</p>
-        <input type="text" value={endDate.toDateString()} onChange={e => this.handleEndChange(e.target.value)}/>
+        {/* <p>Member Since</p>
+        <input type="date" value={startDate.toDateString()} onChange={e => this.handleStartChange(e.target.value)}/> */}
         <p>Certifications</p>
         <input type="text" value="Certifications"/>
         <p>Phone</p>

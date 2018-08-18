@@ -5,7 +5,7 @@ import { faSortUp } from '@fortawesome/free-solid-svg-icons'
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { showModal } from '../../../Modals/actions/modal';
-import { MODAL_TYPE_ADMINEDITPROFILE, MODAL_TYPE_ADMINUPGRADEMEMBERSHIP, MODAL_TYPE_DELETEMEMBER } from '../../../Modals/constants/ModalTypes';
+import { MODAL_TYPE_ADMINEDITPROFILE, MODAL_TYPE_UPGRADEMEMBERSHIPADMIN, MODAL_TYPE_DELETEMEMBER } from '../../../Modals/constants/ModalTypes';
 
 class AdminMember extends Component {
     state = {
@@ -26,16 +26,18 @@ class AdminMember extends Component {
             last_name: member.last_name,
             email: member.email,
             phone: member.phone,
-            start_date: member.start_date,
-            end_date: member.end_date,
             member_id:member.member_id
         });
     };
 
     showUpgradeMembership = () => {
-        this.props.showModal(MODAL_TYPE_ADMINUPGRADEMEMBERSHIP, {
-            membership_level:this.props.member.membership_level,
-            member_id:this.props.member.member_id
+        const member = this.props.member
+        this.props.showModal(MODAL_TYPE_UPGRADEMEMBERSHIPADMIN, {
+            member_id: member.member_id,
+            membership_level: member.membership_level,
+            start_date: member.start_date,
+            end_date: member.end_date,
+            cost: member.cost
         });
     };
 
@@ -49,8 +51,9 @@ class AdminMember extends Component {
         const member = this.props.member
         const isHidden = this.state.memberInfoHidden      
         let MoreMemberInfoClass = isHidden ? 'moreMemberInfo Hide' : 'moreMemberInfo Display'
-        let startDate = new Date(member.start_date);
+        let memberSince = new Date(member.member_since);
         let endDate = new Date(member.end_date);
+        console.log('AdminMappedMember',this.props.member)
         return (
         <div className='adminMember'>
             <div className='alwaysDisplay'>
@@ -71,7 +74,7 @@ class AdminMember extends Component {
                 <hr/>
                 <div className='MoreMemberInfoFlex'>
                     <div className='hiddenMemberInfo'>
-                        <p><span>Member Since:</span> {startDate.toDateString()}</p>
+                        <p><span>Member Since:</span> {memberSince.toDateString()}</p>
                         <p><span>Renewal Date:</span> {endDate.toDateString()}</p>
                         <p><span>Certifications:</span> Safety, Advanced Safety</p>
                         <p><span>Email:</span> {member.email}</p>

@@ -16,64 +16,49 @@ module.exports={
     updateMember: async (req, res) => {
         const db = req.app.get('db')
         const { id } = req.params
-        const { first_name, last_name, email, phone, username } = req.body
-        console.log('body',req.body)
-        let updatedMember = await db.update_member([first_name, last_name, email, phone, username, id])
-        let foundUser = await db.find_user([updatedMember[0].auth_id])
-        console.log('foundUser',foundUser)
-        // foundUser[0] ? res.send(foundUser) : res.sendStatus(401)
-        res.send(foundUser)
+        const { first_name, last_name, email, phone } = req.body
+
+        let updatedMember = await db.update_member([first_name, last_name, email, phone, id])
+        let foundUser = await db.find_user_member_id([updatedMember[0].member_id])
+        // console.log('foundUser',foundUser)
+        foundUser[0] ? res.send(foundUser) : res.sendStatus(401)
     },
     updateMemberPhone: async (req, res) => {
         const db = req.app.get('db')
         const { id } = req.params
         const { phone } = req.body
         let updatedMember = await db.update_member_phone([ phone, id])
-        let foundUser = await db.find_user([updatedMember[0].auth_id])
-        console.log('foundUser',foundUser)
-        // foundUser[0] ? res.send(foundUser) : res.sendStatus(401)
-        res.send(foundUser)
+        let foundUser = await db.find_user_member_id([updatedMember[0].member_id])
+        // console.log('foundUser',foundUser)
+        foundUser[0] ? res.send(foundUser) : res.sendStatus(401)
     },
-    updateMemberAdmin: async (req, res) => {
+    updateMemberSince: async (req, res) => {
         const db = req.app.get('db')
         const { id } = req.params
-        const { first_name, last_name, email, phone, start_date, end_date } = req.body
-        
-        console.log(req.body)
-        let updatedMember = await db.update_member([first_name, last_name, email, phone, id])
-        let updatedMembership = await db.update_membership_admin([start_date, end_date, id])
-        // console.log('updatedMember', updatedMember[0].member_id)
-        let foundUser = await db.find_user([updatedMember[0].auth_id])
+        const { membershipSelection, cost, start_date, end_date, member_since } = req.body
+        let updatedMembership = await db.update_membership([membershipSelection, cost, start_date, end_date, id])
+        let updatedMember = await db.update_member_since([member_since, id])
+        let foundUser = await db.find_user_member_id([updatedMember[0].member_id])
         // console.log('foundUser',foundUser)
-        res.send(foundUser)
+        foundUser[0] ? res.send(foundUser) : res.sendStatus(401)
     },
     updateMembership: async (req, res) => {
         const db = req.app.get('db')
         const { id } = req.params
-        const { membership_level } = req.body
+        const { membershipSelection, cost, start_date, end_date } = req.body
         
-        let updatedMembership = await db.update_membership([membership_level, id])
-        // console.log('updatedMembership', updatedMembership[0])
-        let foundUser = await db.find_user([updatedMembership[0].auth_id])
-        // console.log('foundUser',foundUser)
-        // foundUser[0] ? res.send(foundUser) : res.sendStatus(401)
-        res.send(foundUser)
-    },
-    adminUpdateMembership: async (req, res) => {
-        const db = req.app.get('db')
-        const { id } = req.params
-        
-        let updatedMembership = await db.update_membership_level_admin([req.body.membership_level, id])
-        // console.log('updatedMembership', updatedMembership)
-        let foundUser = await db.find_user([updatedMembership[0].auth_id])
-        // console.log('foundUser',foundUser)
-        res.send(foundUser)
+        let updatedMembership = await db.update_membership([membershipSelection, cost, start_date, end_date, id])
+        console.log('updatedMembership', updatedMembership[0])
+        let foundUser = await db.find_user_member_id([id])
+        console.log('foundUser',foundUser)
+        foundUser[0] ? res.send(foundUser) : res.sendStatus(401)
     },
     deleteMember: (req, res) => {
         const db = req.app.get('db')
 
         // console.log(req.params)
         db.delete_member([req.params.id])
+        res.sendStatus(200)
     },
     updatePic: async (req,res) => {
         const db = req.app.get('db')
