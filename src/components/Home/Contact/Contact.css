@@ -1,8 +1,11 @@
 .contact{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: flex-start;
+    width: 100%;
+    height: 100%;
 }
 
 .contact-left {
@@ -73,8 +76,55 @@ address {
 
 .contact-right {
     width:100%;
+    display: none;
 }
 
 .contact-right img {
-    width:100%;
+    width:210%;
+    object-fit: cover;
+}
+
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+    
+}
+
+/* iPad */
+@media (min-width:768px){    
+    .contact-left {
+        width: 50%;
+    }
+    
+    .contact-right {
+        width: 50%;
+        height: 559px;
+        display: block;
+        overflow: hidden;
+    }
+
+    .contact-img-wrapper {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+/* Desktop */
+@media (min-width:1440px){
+    .contact-left {
+        width: 50%;
+    }
+    
+    .contact-right {
+        width: 50%;
+        height: 559px;
+        display: block;
+        overflow: hidden;
+    }
+
+    .contact-img-wrapper {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
 }

@@ -67,7 +67,7 @@ class Member_Profile extends Component {
         const member = this.props.reducer.user
         let memberSince = new Date(member.start_date);
         let endDate = new Date(member.end_date);
-        let updateProfilePic = this.state.editPic ? 'showUpdateProfilePic' : 'updateProfilePic'
+        let updateProfilePic = this.state.editPic ? 'updateProfilePic showUpdate' : 'updateProfilePic'
         return (
             <div className='memberProfile'>
                 <div className='bgOverflow'>

@@ -11,11 +11,11 @@ import { showModal } from '../../actions/modal'
 
 class UpgradeMembershipModal extends Component {
   state = {
-    member_id: this.props.member_id,
-    membershipSelection: this.props.membership_level,
+    member_id: this.props.reducer.user.member_id,
+    membershipSelection: this.props.reducer.user.membership_level,
     start_date: '',
     end_date: '',
-    cost: this.props.cost
+    cost: this.props.reducer.user.cost
   }
 
   componentDidMount(){
@@ -24,7 +24,7 @@ class UpgradeMembershipModal extends Component {
 
   onClose = () => {
     this.setState({
-      membershipSelector: this.props.membership_level
+      membershipSelector: this.props.reducer.user.membership_level
     })
 
     this.props.hideModal();
@@ -32,7 +32,7 @@ class UpgradeMembershipModal extends Component {
   }
 
   save = () => {
-    axios.put(`/api/updateMembership/${this.props.member_id}`, this.state)
+    axios.put(`/api/updateMembership/${this.props.reducer.user.member_id}`, this.state)
     .then(res=> {
       this.props.updateUserData(res.data[0])
       // this.showPaymentModal()
@@ -54,7 +54,7 @@ class UpgradeMembershipModal extends Component {
   }
 
   handleDate = () => {
-    let startDate = new Date(this.props.start_date)
+    let startDate = new Date(this.props.reducer.user.start_date)
     let start_date = `${startDate.getFullYear()}-${startDate.getMonth()+1}-${startDate.getDate()}`
     let thirtyDays = `${startDate.getFullYear()}-${startDate.getMonth()+2}-${startDate.getDate()}`
 

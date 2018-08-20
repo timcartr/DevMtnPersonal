@@ -2,11 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top:56px;
 }
 
 .memberProfileTop {
-    margin-top:-375px;
-    height: 375px;
+    margin-top:-250px;
+    height: 250px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -21,7 +22,7 @@
 }
 
 .memberProfileBG {
-    height: 375px;
+    height: 250px;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -31,13 +32,13 @@
 
 .profileCircle {
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     border: 6px solid white;
-    margin-top: 60px;
+    margin-top: 20px;
     overflow: hidden;
 }
 
@@ -52,7 +53,6 @@
     background: rgba(0,0,0,.5);
     text-align: center;
     position: relative;
-    /* margin-top: 210px; */
     height: 100%;
     padding-bottom: 27px;
     cursor: pointer;
@@ -60,21 +60,7 @@
     transition: opacity 0.5s ease;
 }
 
-.showUpdateProfilePic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Overpass", Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: 200;
-    color: white;
-    background: rgba(0,0,0,.5);
-    text-align: center;
-    position: relative;
-    /* margin-top: 210px; */
-    height: 100%;
-    padding-bottom: 27px;
-    cursor: pointer;
+.showUpdate {
     opacity: 1;
     transition: opacity 0.5s ease;
 }
@@ -85,9 +71,9 @@
 }
 
 .memberProfileTop h2{
-    margin-top: 64px;
+    margin-top: 24px;
     margin-bottom: 0px;
-    font-size: 60px;
+    font-size: 40px;
     color: white;
 }
 
@@ -95,14 +81,14 @@
     font-family: 'Overpass', Arial, Helvetica, sans-serif;
     font-weight: 200;
     font-style: italic;
-    font-size: 28px;
-    color: white;
-    margin-top: 16px;
+    font-size: 24px;
+    color: rgb(249, 246, 246);
+    margin-top: 6px;
     margin-bottom: 0px;
 }
 
 .memberLower {
-    margin-top: 175px;
+    margin-top: 125px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,18 +99,114 @@
     font-size: 25px;
     font-weight: 200;
     margin: 18px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .memberLower span {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-.modalProfilePicUploader {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    margin-bottom: 40px;
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+    .memberProfileTop {
+        margin-top:-275px;
+        height: 275px;
+    }
+
+    .memberProfileBG {
+        height: 275px;
+        width: 100%;
+    }
+
+    .profileCircle {
+        border-radius: 50%;
+        width: 300px;
+        height: 300px;
+        margin-top: 30px;
+    }
+
+    .memberProfileTop h2{
+        margin-top: 34px;
+        font-size: 60px;
+    }
+    
+    .memberProfileTop h3 {
+        font-weight: 200;
+        font-size: 28px;
+        margin-top: 16px;
+    }
+    
+    .memberLower {
+        margin-top: 200px;
+    }
+    
+    .memberLower p{
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: 200;
+        margin: 18px 0;
+    }
+    
+    .memberLower span {
+        font-size: 18px;
+        font-weight: 700;
+        padding-right: 12px;
+    }
+}
+
+/* iPad */
+@media (min-width:768px){    
+    .memberProfileTop {
+        margin-top:-325px;
+        height: 325px;
+    }
+
+    .memberProfileBG {
+        height: 325px;
+        width: 100%;
+    }
+
+    .profileCircle {
+        border-radius: 50%;
+        width: 300px;
+        height: 300px;
+        margin-top: 30px;
+    }
+
+    .memberProfileTop h2{
+        margin-top: 64px;
+        font-size: 60px;
+    }
+    
+    .memberProfileTop h3 {
+        font-weight: 200;
+        font-size: 28px;
+        margin-top: 16px;
+    }
+    
+    .memberLower {
+        margin-top: 175px;
+    }
+    
+    .memberLower p{
+        flex-direction: row;
+        font-size: 25px;
+        font-weight: 200;
+        margin: 18px 0;
+    }
+    
+    .memberLower span {
+        font-size: 22px;
+        font-weight: 700;
+        padding-right: 12px;
+    }
+}
+
+/* Desktop */
+@media (min-width:1440px){
+    
 }

@@ -31,7 +31,9 @@ export default class Contact extends Component {
                 </div>
             </div>
             <div className="contact-right">
+                <div className='contact-img-wrapper'>
                 <img src={map} alt=""/>
+                </div>
             </div>
         </div>
         )

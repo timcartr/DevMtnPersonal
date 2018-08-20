@@ -1,5 +1,7 @@
 .adminToolbar {
     background-color: #333333;
     height: 56px;
-    z-index: 300;
+    z-index: 200;
+    position: fixed;
+    width: 100%;
 }

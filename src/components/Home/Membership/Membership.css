@@ -3,5 +3,31 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin: 30px;
+    padding: 30px 5%;
+    margin: 0 auto;
+}
+
+.MembershipFlexwrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+
+}
+
+/* iPad */
+@media (min-width:768px){    
+    .Membership{
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Desktop */
+@media (min-width:1440px){
+    .Membership {
+        padding: 2% 15%;
+    }
 }
