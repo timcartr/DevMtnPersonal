@@ -1,9 +1,15 @@
+.dashboardFlex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .membersManager {
-    margin-left: 20%;
     background: #eeeeee;
     border-bottom:0.5px solid #80808080;
     padding-bottom: 1px;
     padding-top:56px;
+    width: calc(100% - 250px);
 }
 
 .adminHeader {

@@ -2,16 +2,15 @@
     height: calc(100vh - 56px);
     background: white;
     /* box-shadow: 1px 0 7px rgba(0,0,0,0.5); */
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     width: 20%;
-    max-width: 400px;
-    min-width: 250px;
-    margin-top:56px;
+    width: 250px;
+    /* margin-top:56px; */
     transition: transform 0.3s ease;
     border-right: 1px solid #80808080;
-    z-index: 100;
+    /* z-index: 100; */
 }
 
 .adminDashboardMenu.open {
@@ -90,7 +89,7 @@
     }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 767px) {
     .adminDashboardMenu {
         display: none;
     }

@@ -23,14 +23,14 @@ class Members_Manager extends Component {
             return(<AdminMember key={i} member={member}/>)
         })
         return (
-        <div>
-        <AdminDashboardMenu/>
-        <div className='membersManager'>
-            <div className='adminHeader'>
-                <h2>Manage Members</h2>
-                <p>Lorem ipsum dolor amet stumptown occupy kinfolk.</p>
-            </div>
-            {mappedMembers}
+        <div className='dashboardFlex'>
+            <AdminDashboardMenu/>
+            <div className='membersManager'>
+                <div className='adminHeader'>
+                    <h2>Manage Members</h2>
+                    <p>Lorem ipsum dolor amet stumptown occupy kinfolk.</p>
+                </div>
+                {mappedMembers}
             </div>
         </div>
         )
