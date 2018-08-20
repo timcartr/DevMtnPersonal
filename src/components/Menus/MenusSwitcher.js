@@ -56,8 +56,10 @@ class MenusSwitcher extends Component {
             if(user.membership_level === 'Admin'){
                 return(
                     <div>
-                        <AdminToolbar drawerClickHandler={this.drawerToggleClickHandler} />
-                        <AdminSideDrawer login = {this.props.login}
+                        <AdminToolbar 
+                        drawerClickHandler={this.drawerToggleClickHandler} />
+                        <AdminSideDrawer 
+                            login = {this.props.login}
                             show={this.state.sideDrawerOpen}/>
                             {/* <div className={backdropClasses}> */}
                             {backdrop}
