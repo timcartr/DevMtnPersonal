@@ -17,7 +17,7 @@
 }
 
 .nameMembership {
-    margin: 0 36px;
+    margin: 0;
 }
 
 .nameMembership h2 {
@@ -25,6 +25,7 @@
 }
 
 .photoWrapper {
+    display: none;
     background: #ccc;
     border-radius: 50%;
     width:75px;
@@ -67,15 +68,15 @@
 
 .MoreMemberInfoFlex{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-.hiddenMemberInfo {
-    margin-left: 111px;
-}
-
 .hiddenMemberInfo p{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     font-family: "Overpass", Arial, Helvetica, sans-serif;
     font-size: 18px;
     font-weight: 200;
@@ -102,4 +103,35 @@
     padding: 8px 14px;
     margin: 7px 0;
     font-weight: 700;
+}
+
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+    .photoWrapper {
+        display: block;
+    }
+    .nameMembership {
+        margin: 0 36px;
+    }
+}
+
+/* iPad */
+@media (min-width:768px){    
+    .MoreMemberInfoFlex{
+        flex-direction: row;
+    }
+
+    .hiddenMemberInfo p{
+        flex-direction: row;
+        font-size: 18px;
+        font-weight: 200;
+        margin: 12px 0;
+    }
+}
+
+/* Desktop */
+@media (min-width:769px){
+    .hiddenMemberInfo {
+        margin-left: 111px;
+    }
 }

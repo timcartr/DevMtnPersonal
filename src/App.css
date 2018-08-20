@@ -100,9 +100,10 @@ button {
 }
 
 /* Desktop */
-@media (min-width:1440px){
+@media (min-width:769px){
     h1 {
         font-size: 60px;
+        line-height: 60px;
     }
 
     h2 {

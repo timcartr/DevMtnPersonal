@@ -5,13 +5,13 @@ import {Link} from 'react-router-dom'
 class AdminSideDrawer extends Component {
     
     render(){
-        let drawerClasses = 'adminSideDrawer'
+        let drawerClasses = 'side-drawer'
         if(this.props.sideDrawerOpen){
-            drawerClasses = 'adminSideDrawer open'
+            drawerClasses = 'side-drawer open'
         }
         return(
             <nav className={drawerClasses}>
-                <div className="adminSideDrawer-flex">
+                <div className="side-drawer-flex">
                     <ul>                    
                         <Link to='/admin'><li>Dashboard</li></Link>
                         <Link to='/admin/members'><li>Members</li></Link>
@@ -21,7 +21,7 @@ class AdminSideDrawer extends Component {
                         <Link to='/admin/classes'><li>Classes</li></Link>
                         <Link to='/admin/marketplace'><li>Marketplace</li></Link>
                     </ul>
-                    <div className="adminSideDrawer-profile">Profile</div>
+                    <div className="side-drawer-profile">Profile</div>
                 </div>
             </nav>
         )
