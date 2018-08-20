@@ -61,8 +61,29 @@
     color: orange;
 }
 
-@media (min-width: 769px) {
-    /* .side-drawer {
-        display: none;
-    } */
+.side-drawer-profile{
+    background: #373737;
+    color: white;
+    padding:15px 10px;
+    margin: 0;
+    font-family: "Overpass", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
 }
+
+.adminToggleBtn {
+    background:#333;
+}
+
+@media (min-width: 769px) {
+    .side-drawer {
+        display: none;
+    }
+}
+
+/* @media (min-width: 769px) {
+    .adminSideDrawer {
+        width: 20%;
+        padding-top: 56px;
+    }
+} */
