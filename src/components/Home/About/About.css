@@ -1,13 +1,46 @@
-.About {
+.about {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin: 30px;
+    padding: 30px;
+    background: rgb(250, 250, 250);
 }
 
-.About img{
+.about img{
     margin: 0 auto;
+    width: 80%;
+}
+
+.about button {
+    margin-top:20px;
+}
+
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+
+}
+
+/* iPad */
+@media (min-width:768px){    
+    .about {
+        padding: 50px 0;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .about img{
+width: 500px;    }
+
+}
+
+/* Desktop */
+@media (min-width:1440px){
+    .about {
+        width: 50%;
+        padding: 0 5%;
+    }
+
 }
 
 

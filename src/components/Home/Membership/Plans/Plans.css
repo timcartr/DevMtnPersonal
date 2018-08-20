@@ -1,7 +1,12 @@
 .plans {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     border: 1px solid #333;
     padding: 0px 15px;
     margin: 18px 0;
+    background: white;
+    text-align: start;
 }
 
 .plans h3{
@@ -30,4 +35,22 @@
 
 .fontAwesome {
     color:#333;
+}
+
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+
+}
+
+/* iPad */
+@media (min-width:768px){    
+    .plans{
+        width: 32%;
+        margin: 18px auto;
+    }
+}
+
+/* Desktop */
+@media (min-width:1440px){
+
 }

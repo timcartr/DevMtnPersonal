@@ -1,4 +1,4 @@
-.Woodshop {
+.woodshop {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,19 +6,37 @@
     background: #f2f2f2
 }
 
-.Woodshop-spacer{
+.woodshop-spacer{
     margin:13px;
 }
 
-.Woodshop h2 {
+.woodshop h2 {
     padding: 0 30px;
 }
 
-.Woodshop h3 {
+.woodshop h3 {
     padding: 0 30px;
     margin: 21px 0 0 0 ;
 }
 
-.Woodshop p {
+.woodshop p {
     padding: 0 30px;
+}
+
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+
+}
+
+/* iPad */
+@media (min-width:768px){    
+
+}
+
+/* Desktop */
+@media (min-width:1440px){
+    .woodshop {
+        width: 50%;
+    }
+
 }
