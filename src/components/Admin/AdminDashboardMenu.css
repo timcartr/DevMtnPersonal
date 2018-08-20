@@ -5,12 +5,11 @@
     /* position: fixed; */
     top: 0;
     left: 0;
-    width: 20%;
     width: 250px;
     /* margin-top:56px; */
     transition: transform 0.3s ease;
-    border-right: 1px solid #80808080;
     /* z-index: 100; */
+    display: none;
 }
 
 .adminDashboardMenu.open {
@@ -18,10 +17,13 @@
 }
 
 .adminDashboardMenu-flex {
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: fixed;
+    width: 250px;
+    border-right: 1px solid #80808080;
 }
 
 .adminDashboardMenu ul {
@@ -82,15 +84,23 @@
     background:#333;
 }
 
-@media (min-width: 769px) {
-    .adminSideDrawer {
-        width: 20%;
-        padding-top: 56px;
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+    .adminDashboardMenu{
+        display: none;
     }
 }
 
-@media (max-width: 767px) {
-    .adminDashboardMenu {
+/* iPad */
+@media (min-width:768px){    
+    .adminDashboardMenu{
         display: none;
+    }
+}
+
+/* Desktop */
+@media (min-width:769px){
+    .adminDashboardMenu{
+        display: block;
     }
 }

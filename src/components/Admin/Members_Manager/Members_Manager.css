@@ -9,7 +9,7 @@
     border-bottom:0.5px solid #80808080;
     padding-bottom: 1px;
     padding-top:56px;
-    width: calc(100% - 250px);
+    width: 100%;
 }
 
 .adminHeader {
@@ -20,4 +20,23 @@
 
 .adminHeader h2{
     margin: 5px 0;
+}
+
+/* iPhone 6/7/8 plus */
+@media (min-width:414px){
+
+}
+
+/* iPad */
+@media (min-width:768px){    
+    .membersManager {
+        width: 100%;
+    }
+}
+
+/* Desktop */
+@media (min-width:769px){
+    .membersManager {
+        width: calc(100% - 250px);
+    }
 }
