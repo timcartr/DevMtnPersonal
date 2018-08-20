@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import '../../Responsive_Header/SideDrawer/SideDrawer.css'
 import {Link} from 'react-router-dom'
 
