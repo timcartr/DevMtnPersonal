@@ -12,6 +12,10 @@
     flex-wrap: wrap;
 }
 
+.MembershipHeader {
+    margin-bottom: 20px;
+}
+
 /* iPhone 6/7/8 plus */
 @media (min-width:414px){
 
@@ -22,6 +26,9 @@
     .Membership{
         align-items: center;
         text-align: center;
+    }
+    .MembershipHeader{
+        width:60%;
     }
 }
 

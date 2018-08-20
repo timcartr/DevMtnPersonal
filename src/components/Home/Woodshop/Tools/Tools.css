@@ -1,6 +1,8 @@
 .tools {
     text-align: center;
-    height:100vh;
+    height:100%;
+    background-repeat: no-repeat;
+    width: 100%;
 }
 
 .tools-grad {
@@ -16,7 +18,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    bottom: 250px;
+    bottom: 300px;
     width: 100%;
 }
 
@@ -48,6 +50,7 @@
     .tools-content {
         width: 70%;
         margin: 0 auto;
+        bottom: 400px;
     }
 
     .tools-content img {
