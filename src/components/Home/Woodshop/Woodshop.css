@@ -30,7 +30,9 @@
 
 /* iPad */
 @media (min-width:768px){    
-
+    .woodshop {
+        width: 50%;
+    }
 }
 
 /* Desktop */
