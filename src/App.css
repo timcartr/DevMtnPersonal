@@ -103,6 +103,7 @@ button {
 @media (min-width:769px){
     h1 {
         font-size: 60px;
+        line-height: 60px;
     }
 
     h2 {

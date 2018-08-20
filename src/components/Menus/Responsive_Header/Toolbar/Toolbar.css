@@ -84,7 +84,7 @@
     color:white;
 }
 
-@media (max-width:768px){
+@media (max-width:600px){
     .toolbar_navigation_items{
         display: none;
     }
@@ -93,7 +93,7 @@
     }
 }
 
-@media (min-width:768px) {
+@media (min-width:769px) {
     .toolbar_toggle-button {
         display: none;
     }
